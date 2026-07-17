@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+  body{margin:0;font-family:'Poppins',sans-serif;}
+  .scl::-webkit-scrollbar{width:0;height:0;display:none;}
+  .scl{scrollbar-width:none;-ms-overflow-style:none;}
+  @keyframes sgPop{0%{opacity:0;transform:scale(.82)}60%{opacity:1;transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+  @keyframes sgUp{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+  @keyframes sgBar{0%{width:6%}100%{width:96%}}
+  @keyframes sgRing{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;width:100%;background:radial-gradient(1200px 600px at 70% -10%, #20232b 0%, #15171d 55%, #0f1014 100%);display:flex;align-items:flex-start;justify-content:center;padding:40px 32px 64px;font-family:'Poppins',sans-serif;">
+  <div style="display:flex;gap:36px;align-items:flex-start;">
+
+    <!-- ============ PROTOTYPE CONTROL RAIL ============ -->
+    <div class="scl" style="width:248px;color:#E7E7EC;position:sticky;top:40px;max-height:90vh;overflow-y:auto;padding-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <div style="width:30px;height:30px;border-radius:8px;background:#D62828;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;letter-spacing:-.5px;">SI</div>
+        <div style="font-weight:700;font-size:15px;">SIORG</div>
+      </div>
+      <div style="font-size:11px;color:#8B8C96;line-height:1.5;margin-bottom:22px;">Prototipe interaktif · KONI Kab. Tangerang</div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#75767F;text-transform:uppercase;margin-bottom:10px;">Login sebagai (Role)</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:22px;">
+        <sc-for list="{{ roleItems }}" as="r" hint-placeholder-count="7">
+          <button onClick="{{ r.onClick }}" style="{{ r.style }}">
+            <span style="font-weight:600;">{{ r.label }}</span>
+            <span style="font-size:10.5px;opacity:.7;">{{ r.desc }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#75767F;text-transform:uppercase;margin-bottom:10px;">Gaya Dashboard</div>
+      <div style="display:flex;gap:6px;margin-bottom:22px;">
+        <sc-for list="{{ dashItems }}" as="d" hint-placeholder-count="3">
+          <button onClick="{{ d.onClick }}" style="{{ d.style }}">{{ d.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:#75767F;text-transform:uppercase;margin-bottom:10px;">Loncat ke layar</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <sc-for list="{{ jumpItems }}" as="j" hint-placeholder-count="8">
+          <button onClick="{{ j.onClick }}" style="{{ j.style }}">{{ j.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ============ PHONE ============ -->
+    <div style="width:417px;height:876px;background:#0a0a0c;border-radius:56px;padding:12px;box-shadow:0 50px 100px -30px rgba(0,0,0,.7), 0 0 0 2px #2a2b30, inset 0 0 0 2px #000;position:relative;flex-shrink:0;">
+      <div style="position:relative;width:393px;height:852px;border-radius:44px;overflow:hidden;background:#F5F4F1;">
+
+        <!-- status bar -->
+        <div style="position:absolute;top:0;left:0;right:0;height:54px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:18px 30px 0;pointer-events:none;">
+          <div style="font-size:14px;font-weight:600;color:{{ statusColor }};">09:41</div>
+          <div style="display:flex;gap:6px;align-items:center;color:{{ statusColor }};">
+            <div style="display:flex;gap:2px;align-items:flex-end;height:11px;">
+              <div style="width:3px;height:5px;background:currentColor;border-radius:1px;"></div>
+              <div style="width:3px;height:7px;background:currentColor;border-radius:1px;"></div>
+              <div style="width:3px;height:9px;background:currentColor;border-radius:1px;"></div>
+              <div style="width:3px;height:11px;background:currentColor;border-radius:1px;"></div>
+            </div>
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 2.5c2.2 0 4.2.86 5.7 2.27M8 2.5C5.8 2.5 3.8 3.36 2.3 4.77M8 6.2c1.2 0 2.3.47 3.1 1.24M8 6.2c-1.2 0-2.3.47-3.1 1.24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="10" r="1.1" fill="currentColor"/></svg>
+            <div style="width:24px;height:12px;border:1.6px solid currentColor;border-radius:3px;opacity:.9;position:relative;"><div style="position:absolute;inset:1.6px;width:70%;background:currentColor;border-radius:1px;"></div></div>
+          </div>
+        </div>
+        <!-- dynamic island -->
+        <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:118px;height:34px;background:#000;border-radius:20px;z-index:50;"></div>
+
+        <!-- ============ SCREEN CONTENT ============ -->
+
+        <!-- SPLASH -->
+        <sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;inset:0;background:linear-gradient(165deg,#E23232 0%,#C81F1F 55%,#A11717 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:30;overflow:hidden;">
+          <div style="position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.06);"></div>
+          <div style="position:absolute;bottom:-60px;left:-90px;width:240px;height:240px;border-radius:50%;background:rgba(0,0,0,.08);"></div>
+          <div style="animation:sgPop .7s ease both;">
+            <div style="width:148px;height:148px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 24px 50px -16px rgba(0,0,0,.4);">
+              <img src="assets/koni-logo.png" alt="KONI" style="width:118px;height:118px;object-fit:contain;"/>
+            </div>
+          </div>
+          <div style="animation:sgUp .6s ease .25s both;text-align:center;margin-top:30px;">
+            <div style="font-size:42px;font-weight:800;color:#fff;letter-spacing:2px;">SIORG</div>
+            <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.82);letter-spacing:.18em;text-transform:uppercase;margin-top:2px;">KONI Kabupaten Tangerang</div>
+          </div>
+          <div style="animation:sgUp .6s ease .45s both;margin-top:18px;font-size:14px;color:rgba(255,255,255,.92);font-weight:500;font-style:italic;">"{{ tagline }}"</div>
+          <div style="position:absolute;bottom:74px;width:150px;height:4px;background:rgba(255,255,255,.22);border-radius:99px;overflow:hidden;">
+            <div style="height:100%;background:{{ accentGold }};border-radius:99px;animation:sgBar 2s ease-out forwards;"></div>
+          </div>
+          <div style="position:absolute;bottom:42px;font-size:10.5px;color:rgba(255,255,255,.55);letter-spacing:.1em;">Membangun Prestasi Olahraga Digital</div>
+        </div>
+        </sc-if>
+
+        <!-- LOGIN -->
+        <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+        <div class="scl" style="position:absolute;inset:0;background:#F5F4F1;overflow-y:auto;z-index:20;">
+          <div style="background:linear-gradient(160deg,#E23232,#B81C1C);padding:80px 28px 46px;border-radius:0 0 32px 32px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-50px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.07);"></div>
+            <div style="width:74px;height:74px;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.35);">
+              <img src="assets/koni-logo.png" style="width:58px;height:58px;object-fit:contain;"/>
+            </div>
+            <div style="color:#fff;font-size:25px;font-weight:800;margin-top:20px;line-height:1.15;">Selamat Datang</div>
+            <div style="color:rgba(255,255,255,.85);font-size:13.5px;margin-top:6px;font-weight:400;">Masuk ke Sistem Informasi Organisasi Olahraga</div>
+          </div>
+
+          <div style="padding:30px 26px 40px;">
+            <label style="font-size:12.5px;font-weight:600;color:#3A3A40;display:block;margin-bottom:7px;">Email / NIK</label>
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E7E4DE;border-radius:14px;padding:0 14px;height:52px;margin-bottom:18px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="#B6B3AC" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="#B6B3AC" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <input placeholder="nama@koni.or.id" style="border:none;outline:none;flex:1;font-family:inherit;font-size:14px;color:#1A1A1E;background:transparent;"/>
+            </div>
+            <label style="font-size:12.5px;font-weight:600;color:#3A3A40;display:block;margin-bottom:7px;">Password</label>
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E7E4DE;border-radius:14px;padding:0 14px;height:52px;margin-bottom:12px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2.5" stroke="#B6B3AC" stroke-width="1.8"/><path d="M8 10V8a4 4 0 018 0v2" stroke="#B6B3AC" stroke-width="1.8"/></svg>
+              <input type="password" value="password" style="border:none;outline:none;flex:1;font-family:inherit;font-size:14px;color:#1A1A1E;background:transparent;letter-spacing:2px;"/>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="#B6B3AC" stroke-width="1.8"/><circle cx="12" cy="12" r="2.8" stroke="#B6B3AC" stroke-width="1.8"/></svg>
+            </div>
+            <div style="text-align:right;margin-bottom:24px;"><span onClick="{{ noop }}" style="font-size:12.5px;font-weight:600;color:#D62828;cursor:pointer;">Lupa Password?</span></div>
+
+            <button onClick="{{ onLogin }}" style="width:100%;height:54px;border:none;border-radius:15px;background:linear-gradient(135deg,#E23232,#C01D1D);color:#fff;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;box-shadow:0 14px 26px -10px rgba(214,40,40,.6);letter-spacing:.02em;">Masuk</button>
+
+            <div style="display:flex;align-items:center;gap:14px;margin:24px 0;">
+              <div style="flex:1;height:1px;background:#E2DFD8;"></div>
+              <span style="font-size:11.5px;color:#A3A099;">atau</span>
+              <div style="flex:1;height:1px;background:#E2DFD8;"></div>
+            </div>
+            <button onClick="{{ onLogin }}" style="width:100%;height:52px;border:1.5px solid #E7E4DE;border-radius:15px;background:#fff;color:#3A3A40;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;">
+              <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.14-3.13-.4-4.6H24v8.7h11.8c-.5 2.74-2.05 5.06-4.37 6.62v5.5h7.06C42.6 36.9 45 31.2 45 24.5z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.06-5.5c-1.96 1.32-4.47 2.1-7.5 2.1-5.77 0-10.66-3.9-12.4-9.13H4.3v5.7C7.92 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.6 28.14c-.45-1.32-.7-2.73-.7-4.14s.25-2.82.7-4.14v-5.7H4.3A21.9 21.9 0 002 24c0 3.55.85 6.9 2.3 9.84l7.3-5.7z"/><path fill="#EA4335" d="M24 10.74c3.25 0 6.17 1.12 8.47 3.3l6.35-6.35C34.9 4.07 29.94 2 24 2 15.4 2 7.92 6.9 4.3 14.16l7.3 5.7c1.74-5.23 6.63-9.12 12.4-9.12z"/></svg>
+              Masuk dengan Google
+            </button>
+            <div style="text-align:center;margin-top:26px;font-size:12.5px;color:#8B8880;">Belum punya akun? <span style="color:#D62828;font-weight:600;">Hubungi Admin</span></div>
+          </div>
+        </div>
+        </sc-if>
+
+        <!-- ============ APP ============ -->
+        <sc-if value="{{ inApp }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;background:#F5F4F1;">
+          <div class="scl" style="flex:1;overflow-y:auto;padding-bottom:96px;">
+
+            <!-- ===== DASHBOARD ===== -->
+            <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+            <div style="background:linear-gradient(160deg,#E23232,#BC1D1D);padding:60px 22px 26px;border-radius:0 0 26px 26px;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:-40px;right:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08);"></div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;position:relative;">
+                <div>
+                  <div style="color:rgba(255,255,255,.82);font-size:12.5px;font-weight:400;">{{ dateLabel }}</div>
+                  <div style="color:#fff;font-size:20px;font-weight:700;margin-top:3px;">Halo, {{ greetingName }}</div>
+                  <div style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:rgba(255,255,255,.16);padding:4px 11px;border-radius:99px;">
+                    <div style="width:6px;height:6px;border-radius:50%;background:{{ accentGold }};"></div>
+                    <span style="color:#fff;font-size:11px;font-weight:600;">{{ roleLabel }}</span>
+                  </div>
+                </div>
+                <div onClick="{{ noop }}" style="position:relative;width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <div style="position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:{{ accentGold }};border:2px solid #C81F1F;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:0 18px;margin-top:-8px;position:relative;">
+
+              <!-- VARIANT 0 : KPI grid -->
+              <sc-if value="{{ isDashV0 }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;">
+                <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+                  <div style="background:#fff;border-radius:16px;padding:13px 11px;box-shadow:0 6px 16px -10px rgba(0,0,0,.18);border:1px solid #EFEDE8;">
+                    <div style="width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;background:{{ k.color }};letter-spacing:.02em;">{{ k.mono }}</div>
+                    <div style="font-size:20px;font-weight:800;color:#1A1A1E;margin-top:9px;line-height:1;">{{ k.value }}</div>
+                    <div style="font-size:10.5px;color:#8B8880;margin-top:4px;font-weight:500;line-height:1.2;">{{ k.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              </sc-if>
+
+              <!-- VARIANT 1 : hero stat -->
+              <sc-if value="{{ isDashV1 }}" hint-placeholder-val="{{ true }}">
+              <div style="background:linear-gradient(135deg,#1F2230,#2A2E3F);border-radius:20px;padding:20px;color:#fff;box-shadow:0 16px 34px -16px rgba(0,0,0,.4);position:relative;overflow:hidden;">
+                <div style="position:absolute;right:-20px;bottom:-30px;width:140px;height:140px;border-radius:50%;background:rgba(244,162,97,.12);"></div>
+                <div style="font-size:12px;color:rgba(255,255,255,.7);font-weight:500;">Total Atlet Terdaftar</div>
+                <div style="display:flex;align-items:flex-end;gap:10px;margin-top:4px;">
+                  <div style="font-size:42px;font-weight:800;line-height:1;">1.842</div>
+                  <div style="display:flex;align-items:center;gap:3px;color:#5FD08A;font-size:12px;font-weight:700;margin-bottom:6px;">▲ 7.3%</div>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:5px;height:46px;margin-top:14px;">
+                  <sc-for list="{{ spark }}" as="b" hint-placeholder-count="9">
+                    <div style="flex:1;border-radius:4px 4px 0 0;background:{{ b.fill }};height:{{ b.h }};"></div>
+                  </sc-for>
+                </div>
+              </div>
+              <div class="scl" style="display:flex;gap:9px;overflow-x:auto;margin-top:12px;padding-bottom:2px;">
+                <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+                  <div style="min-width:104px;background:#fff;border-radius:14px;padding:12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.18);border:1px solid #EFEDE8;">
+                    <div style="font-size:18px;font-weight:800;color:{{ k.color }};line-height:1;">{{ k.value }}</div>
+                    <div style="font-size:10.5px;color:#8B8880;margin-top:5px;font-weight:500;">{{ k.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              </sc-if>
+
+              <!-- VARIANT 2 : compact pills + ringkasan -->
+              <sc-if value="{{ isDashV2 }}" hint-placeholder-val="{{ true }}">
+              <div class="scl" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;">
+                <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+                  <div style="min-width:92px;background:#fff;border:1px solid #EFEDE8;border-radius:99px;padding:8px 8px 8px 8px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px -8px rgba(0,0,0,.16);">
+                    <div style="width:32px;height:32px;border-radius:50%;background:{{ k.color }};color:#fff;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;flex-shrink:0;">{{ k.mono }}</div>
+                    <div><div style="font-size:15px;font-weight:800;color:#1A1A1E;line-height:1;">{{ k.value }}</div><div style="font-size:9px;color:#8B8880;font-weight:500;white-space:nowrap;">{{ k.label }}</div></div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="background:#fff;border-radius:18px;padding:16px;margin-top:12px;border:1px solid #EFEDE8;box-shadow:0 6px 16px -10px rgba(0,0,0,.16);">
+                <div style="font-size:14px;font-weight:700;color:#1A1A1E;margin-bottom:12px;">Ringkasan Bulan Ini</div>
+                <sc-for list="{{ ringkasan }}" as="row" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #F1EFEA;">
+                    <div style="width:8px;height:8px;border-radius:50%;background:{{ row.color }};"></div>
+                    <div style="flex:1;font-size:12.5px;color:#3A3A40;font-weight:500;">{{ row.label }}</div>
+                    <div style="font-size:13px;font-weight:700;color:#1A1A1E;">{{ row.value }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              </sc-if>
+
+              <!-- QUICK MENU -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px;">
+                <div style="font-size:15px;font-weight:700;color:#1A1A1E;">Menu Cepat</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+                <sc-for list="{{ quickMenu }}" as="q" hint-placeholder-count="8">
+                  <div onClick="{{ q.onClick }}" style="background:#fff;border-radius:15px;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;border:1px solid #EFEDE8;box-shadow:0 5px 14px -10px rgba(0,0,0,.16);">
+                    <div style="width:40px;height:40px;border-radius:12px;background:{{ q.bg }};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:{{ q.color }};">{{ q.mono }}</div>
+                    <div style="font-size:10px;font-weight:600;color:#52514C;text-align:center;line-height:1.2;">{{ q.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <!-- NEWS -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin:24px 2px 12px;">
+                <div style="font-size:15px;font-weight:700;color:#1A1A1E;">Berita Terbaru</div>
+                <span style="font-size:12px;font-weight:600;color:#D62828;cursor:pointer;">Semua</span>
+              </div>
+              <div class="scl" style="display:flex;gap:13px;overflow-x:auto;padding-bottom:4px;">
+                <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+                  <div style="min-width:248px;max-width:248px;background:#fff;border-radius:18px;overflow:hidden;border:1px solid #EFEDE8;box-shadow:0 8px 20px -12px rgba(0,0,0,.2);">
+                    <div style="height:118px;background:repeating-linear-gradient(135deg,{{ n.c1 }},{{ n.c1 }} 11px,{{ n.c2 }} 11px,{{ n.c2 }} 22px);position:relative;display:flex;align-items:flex-end;padding:11px;">
+                      <span style="background:rgba(0,0,0,.55);color:#fff;font-size:9.5px;font-weight:700;padding:4px 9px;border-radius:99px;letter-spacing:.04em;">{{ n.tag }}</span>
+                    </div>
+                    <div style="padding:13px;">
+                      <div style="font-size:13px;font-weight:700;color:#1A1A1E;line-height:1.35;">{{ n.title }}</div>
+                      <div style="font-size:11px;color:#9B9890;margin-top:8px;">{{ n.date }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <!-- AGENDA preview -->
+              <div style="display:flex;align-items:center;justify-content:space-between;margin:24px 2px 12px;">
+                <div style="font-size:15px;font-weight:700;color:#1A1A1E;">Agenda Terdekat</div>
+                <span onClick="{{ goAgenda }}" style="font-size:12px;font-weight:600;color:#D62828;cursor:pointer;">Lihat Kalender</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px;">
+                <sc-for list="{{ agendaPreview }}" as="a" hint-placeholder-count="3">
+                  <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:12px;border:1px solid #EFEDE8;box-shadow:0 5px 14px -10px rgba(0,0,0,.14);">
+                    <div style="width:48px;height:52px;border-radius:12px;background:{{ a.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+                      <span style="font-size:18px;font-weight:800;color:{{ a.fg }};line-height:1;">{{ a.day }}</span>
+                      <span style="font-size:9.5px;font-weight:600;color:{{ a.fg }};text-transform:uppercase;">{{ a.mon }}</span>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                      <span style="display:inline-block;font-size:9px;font-weight:700;color:{{ a.fg }};background:{{ a.bg }};padding:2px 8px;border-radius:99px;text-transform:uppercase;letter-spacing:.03em;">{{ a.type }}</span>
+                      <div style="font-size:12.5px;font-weight:600;color:#1A1A1E;margin-top:5px;line-height:1.3;">{{ a.title }}</div>
+                      <div style="font-size:10.5px;color:#9B9890;margin-top:3px;">{{ a.meta }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            </sc-if>
+
+            <!-- ===== ORGANISASI ===== -->
+            <sc-if value="{{ isOrganisasi }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:60px 20px 14px;background:#fff;border-bottom:1px solid #EEEBE5;">
+              <div style="font-size:22px;font-weight:800;color:#1A1A1E;">Organisasi</div>
+              <div style="font-size:12.5px;color:#9B9890;margin-top:2px;">28 cabang olahraga terdaftar</div>
+              <div style="margin-top:14px;display:flex;align-items:center;gap:10px;background:#F3F1EC;border-radius:13px;padding:0 14px;height:44px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#A3A099" stroke-width="1.8"/><path d="M21 21l-4-4" stroke="#A3A099" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <input placeholder="Cari cabang olahraga..." style="border:none;outline:none;background:transparent;flex:1;font-family:inherit;font-size:13.5px;color:#1A1A1E;"/>
+              </div>
+            </div>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:11px;">
+              <sc-for list="{{ cabangList }}" as="c" hint-placeholder-count="6">
+                <div onClick="{{ c.onOpen }}" style="background:#fff;border-radius:18px;padding:15px;border:1px solid #EFEDE8;box-shadow:0 6px 16px -12px rgba(0,0,0,.2);cursor:pointer;">
+                  <div style="display:flex;gap:13px;align-items:center;">
+                    <div style="width:50px;height:50px;border-radius:14px;background:{{ c.color }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;flex-shrink:0;">{{ c.abbr }}</div>
+                    <div style="flex:1;min-width:0;">
+                      <div style="font-size:15px;font-weight:700;color:#1A1A1E;">{{ c.name }}</div>
+                      <div style="font-size:11.5px;color:#9B9890;margin-top:2px;">Berdiri {{ c.year }} · {{ c.abbr }}</div>
+                    </div>
+                    <span style="font-size:10px;font-weight:700;color:{{ c.sc }};background:{{ c.sb }};padding:4px 10px;border-radius:99px;">{{ c.status }}</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;padding-top:13px;border-top:1px solid #F2F0EB;">
+                    <div style="text-align:center;"><div style="font-size:15px;font-weight:800;color:#1A1A1E;">{{ c.atlet }}</div><div style="font-size:9.5px;color:#9B9890;margin-top:1px;">Atlet</div></div>
+                    <div style="text-align:center;"><div style="font-size:15px;font-weight:800;color:#1A1A1E;">{{ c.klub }}</div><div style="font-size:9.5px;color:#9B9890;margin-top:1px;">Klub</div></div>
+                    <div style="text-align:center;"><div style="font-size:15px;font-weight:800;color:#1A1A1E;">{{ c.pelatih }}</div><div style="font-size:9.5px;color:#9B9890;margin-top:1px;">Pelatih</div></div>
+                    <div style="text-align:center;"><div style="font-size:15px;font-weight:800;color:#1A1A1E;">{{ c.wasit }}</div><div style="font-size:9.5px;color:#9B9890;margin-top:1px;">Wasit</div></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            </sc-if>
+
+            <!-- ===== CABANG DETAIL ===== -->
+            <sc-if value="{{ isCabangDetail }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:56px 16px 0;background:#fff;">
+              <div style="display:flex;align-items:center;gap:12px;height:40px;">
+                <button onClick="{{ closeCabang }}" style="width:38px;height:38px;border-radius:11px;border:1px solid #EEEBE5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#1A1A1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div style="font-size:15px;font-weight:700;color:#1A1A1E;">Detail Cabang Olahraga</div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:center;padding:18px 2px 16px;">
+                <div style="width:62px;height:62px;border-radius:18px;background:{{ cab.color }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;flex-shrink:0;">{{ cab.abbr }}</div>
+                <div style="flex:1;">
+                  <div style="font-size:19px;font-weight:800;color:#1A1A1E;">{{ cab.name }}</div>
+                  <div style="display:flex;gap:8px;align-items:center;margin-top:6px;">
+                    <span style="font-size:10px;font-weight:700;color:{{ cab.sc }};background:{{ cab.sb }};padding:3px 10px;border-radius:99px;">{{ cab.status }}</span>
+                    <span style="font-size:11.5px;color:#9B9890;">Berdiri {{ cab.year }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="scl" style="display:flex;gap:8px;overflow-x:auto;padding:0 0 14px;">
+                <sc-for list="{{ cabTabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button></sc-for>
+              </div>
+            </div>
+            <div style="padding:16px 18px;">
+              <sc-if value="{{ isCabTab0 }}" hint-placeholder-val="{{ true }}">
+                <div style="background:#fff;border-radius:16px;padding:16px;border:1px solid #EFEDE8;margin-bottom:12px;">
+                  <div style="font-size:13px;font-weight:700;color:#1A1A1E;margin-bottom:7px;">Sejarah</div>
+                  <div style="font-size:12.5px;color:#6B6A64;line-height:1.6;">{{ cab.sejarah }}</div>
+                </div>
+                <div style="background:#fff;border-radius:16px;padding:16px;border:1px solid #EFEDE8;margin-bottom:12px;">
+                  <div style="font-size:13px;font-weight:700;color:#1A1A1E;margin-bottom:7px;">Visi</div>
+                  <div style="font-size:12.5px;color:#6B6A64;line-height:1.6;">{{ cab.visi }}</div>
+                </div>
+                <div style="background:#fff;border-radius:16px;padding:16px;border:1px solid #EFEDE8;">
+                  <div style="font-size:13px;font-weight:700;color:#1A1A1E;margin-bottom:10px;">Misi</div>
+                  <sc-for list="{{ cab.misi }}" as="m" hint-placeholder-count="3">
+                    <div style="display:flex;gap:10px;margin-bottom:9px;align-items:flex-start;">
+                      <div style="width:6px;height:6px;border-radius:50%;background:#D62828;margin-top:6px;flex-shrink:0;"></div>
+                      <div style="font-size:12.5px;color:#6B6A64;line-height:1.5;">{{ m }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isCabTab1 }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <sc-for list="{{ officials }}" as="o" hint-placeholder-count="6">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:13px;border:1px solid #EFEDE8;">
+                      <div style="width:46px;height:46px;border-radius:13px;background:{{ o.color }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0;">{{ o.initials }}</div>
+                      <div style="flex:1;"><div style="font-size:13.5px;font-weight:700;color:#1A1A1E;">{{ o.name }}</div><div style="font-size:11.5px;color:#9B9890;margin-top:2px;">{{ o.role }} · {{ o.period }}</div></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isCabTab2 }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <sc-for list="{{ clubsList }}" as="cl" hint-placeholder-count="6">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:13px;border:1px solid #EFEDE8;">
+                      <div style="width:46px;height:46px;border-radius:13px;background:{{ cl.color }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;">{{ cl.initials }}</div>
+                      <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:700;color:#1A1A1E;">{{ cl.name }}</div><div style="font-size:11.5px;color:#9B9890;margin-top:2px;">Ketua: {{ cl.head }} · {{ cl.atlet }} atlet</div></div>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#C9C6BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isCabTab3 }}" hint-placeholder-val="{{ true }}">
+                <div style="background:#fff;border-radius:16px;padding:18px;border:1px solid #EFEDE8;">
+                  <div style="font-size:13px;font-weight:700;color:#1A1A1E;margin-bottom:16px;">Statistik Cabang</div>
+                  <sc-for list="{{ cab.bars }}" as="b" hint-placeholder-count="3">
+                    <div style="margin-bottom:16px;">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:7px;"><span style="font-size:12.5px;color:#6B6A64;font-weight:500;">{{ b.label }}</span><span style="font-size:13px;font-weight:800;color:#1A1A1E;">{{ b.value }}</span></div>
+                      <div style="height:9px;border-radius:99px;background:#F1EFEA;overflow:hidden;"><div style="height:100%;border-radius:99px;background:{{ b.color }};width:{{ b.pct }};"></div></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            </sc-if>
+
+            <!-- ===== ATLET LIST ===== -->
+            <sc-if value="{{ isAtlet }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:60px 20px 12px;background:#fff;border-bottom:1px solid #EEEBE5;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div><div style="font-size:22px;font-weight:800;color:#1A1A1E;">Atlet</div><div style="font-size:12.5px;color:#9B9890;margin-top:2px;">{{ atletCount }} atlet ditampilkan</div></div>
+                <button onClick="{{ noop }}" style="width:42px;height:42px;border-radius:12px;border:1px solid #EEEBE5;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="#52514C" stroke-width="1.9" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <div style="margin-top:14px;display:flex;align-items:center;gap:10px;background:#F3F1EC;border-radius:13px;padding:0 14px;height:44px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#A3A099" stroke-width="1.8"/><path d="M21 21l-4-4" stroke="#A3A099" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <input placeholder="Cari nama atlet..." style="border:none;outline:none;background:transparent;flex:1;font-family:inherit;font-size:13.5px;color:#1A1A1E;"/>
+              </div>
+              <div class="scl" style="display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:2px;">
+                <sc-for list="{{ atletChips }}" as="f" hint-placeholder-count="5"><button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button></sc-for>
+              </div>
+            </div>
+            <div style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ atletList }}" as="a" hint-placeholder-count="6">
+                <div onClick="{{ a.onOpen }}" style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:16px;padding:13px;border:1px solid #EFEDE8;box-shadow:0 5px 14px -11px rgba(0,0,0,.2);cursor:pointer;">
+                  <div style="width:52px;height:52px;border-radius:50%;background:{{ a.sportColor }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;flex-shrink:0;">{{ a.initials }}</div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:14.5px;font-weight:700;color:#1A1A1E;">{{ a.name }}</div>
+                    <div style="font-size:11.5px;color:#9B9890;margin-top:2px;">{{ a.sport }} · {{ a.club }}</div>
+                    <div style="display:flex;gap:6px;margin-top:7px;">
+                      <span style="font-size:9.5px;font-weight:600;color:#6B6A64;background:#F2F0EB;padding:3px 9px;border-radius:99px;">{{ a.cat }}</span>
+                      <span style="font-size:9.5px;font-weight:600;color:#6B6A64;background:#F2F0EB;padding:3px 9px;border-radius:99px;">{{ a.genderLabel }}</span>
+                    </div>
+                  </div>
+                  <span style="font-size:10px;font-weight:700;color:{{ a.sc }};background:{{ a.sb }};padding:4px 10px;border-radius:99px;align-self:flex-start;">{{ a.status }}</span>
+                </div>
+              </sc-for>
+            </div>
+            </sc-if>
+
+            <!-- ===== ATLET DETAIL ===== -->
+            <sc-if value="{{ isAtletDetail }}" hint-placeholder-val="{{ true }}">
+            <div style="background:linear-gradient(160deg,#E23232,#BC1D1D);padding:56px 16px 22px;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.08);"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;height:40px;position:relative;">
+                <button onClick="{{ closeAtlet }}" style="width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button onClick="{{ noop }}" style="width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="2.4" stroke="#fff" stroke-width="1.8"/><circle cx="6" cy="12" r="2.4" stroke="#fff" stroke-width="1.8"/><circle cx="18" cy="19" r="2.4" stroke="#fff" stroke-width="1.8"/><path d="M8 11l8-5M8 13l8 5" stroke="#fff" stroke-width="1.8"/></svg>
+                </button>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;margin-top:8px;position:relative;">
+                <div style="width:84px;height:84px;border-radius:50%;background:#fff;padding:3px;box-shadow:0 12px 26px -10px rgba(0,0,0,.4);">
+                  <div style="width:100%;height:100%;border-radius:50%;background:{{ ad.sportColor }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;">{{ ad.initials }}</div>
+                </div>
+                <div style="font-size:20px;font-weight:800;color:#fff;margin-top:12px;white-space:nowrap;">{{ ad.name }}</div>
+                <div style="font-size:12.5px;color:rgba(255,255,255,.85);margin-top:2px;">{{ ad.sport }} · {{ ad.club }}</div>
+                <span style="font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:99px;margin-top:9px;">{{ ad.status }} · {{ ad.cat }}</span>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:18px;position:relative;">
+                <div style="flex:1;background:rgba(255,255,255,.14);border-radius:13px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:#fff;">{{ ad.age }}</div><div style="font-size:9.5px;color:rgba(255,255,255,.8);margin-top:1px;">Usia</div></div>
+                <div style="flex:1;background:rgba(255,255,255,.14);border-radius:13px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:#fff;">{{ ad.height }}</div><div style="font-size:9.5px;color:rgba(255,255,255,.8);margin-top:1px;">Tinggi</div></div>
+                <div style="flex:1;background:rgba(255,255,255,.14);border-radius:13px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:800;color:#fff;">{{ ad.weight }}</div><div style="font-size:9.5px;color:rgba(255,255,255,.8);margin-top:1px;">Berat</div></div>
+              </div>
+            </div>
+            <div class="scl" style="display:flex;gap:8px;overflow-x:auto;padding:14px 18px;background:#fff;border-bottom:1px solid #EEEBE5;">
+              <sc-for list="{{ atletTabs }}" as="t" hint-placeholder-count="5"><button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button></sc-for>
+            </div>
+            <div style="padding:16px 18px;">
+              <sc-if value="{{ isATab0 }}" hint-placeholder-val="{{ true }}">
+                <div style="background:#fff;border-radius:16px;padding:6px 16px;border:1px solid #EFEDE8;">
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">NIK</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.nik }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Tempat/Tgl Lahir</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.birth }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Jenis Kelamin</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.genderLabel }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Golongan Darah</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.blood }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Alamat</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;text-align:right;max-width:60%;">{{ ad.addr }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">No. HP</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.phone }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;"><span style="font-size:12px;color:#9B9890;">Email</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.email }}</span></div>
+                </div>
+                <div style="background:#fff;border-radius:16px;padding:6px 16px;border:1px solid #EFEDE8;margin-top:12px;">
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Cabang Olahraga</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.sport }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F2F0EB;"><span style="font-size:12px;color:#9B9890;">Klub</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.club }}</span></div>
+                  <div style="display:flex;justify-content:space-between;padding:11px 0;"><span style="font-size:12px;color:#9B9890;">Pelatih</span><span style="font-size:12.5px;font-weight:600;color:#1A1A1E;">{{ ad.coach }}</span></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isATab1 }}" hint-placeholder-val="{{ true }}">
+                <div style="position:relative;padding-left:6px;">
+                  <sc-for list="{{ ad.ach }}" as="ac" hint-placeholder-count="4">
+                    <div style="display:flex;gap:14px;padding-bottom:18px;position:relative;">
+                      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+                        <div style="width:34px;height:34px;border-radius:50%;background:{{ ac.mc }};display:flex;align-items:center;justify-content:center;z-index:2;">
+                          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#fff" stroke-width="1.8"/><path d="M8.5 14l-1.5 7 5-3 5 3-1.5-7" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div style="flex:1;width:2px;background:#EAE7E1;margin-top:2px;"></div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:14px;padding:13px;border:1px solid #EFEDE8;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:11px;font-weight:700;color:{{ ac.mc }};">{{ ac.ml }}</span><span style="font-size:11px;color:#9B9890;font-weight:600;">{{ ac.year }}</span></div>
+                        <div style="font-size:13px;font-weight:600;color:#1A1A1E;margin-top:5px;line-height:1.35;">{{ ac.title }}</div>
+                        <div style="font-size:11px;color:#9B9890;margin-top:5px;">Tingkat {{ ac.level }}</div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isATab2 }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:11px;">
+                  <sc-for list="{{ ad.certs }}" as="ce" hint-placeholder-count="2">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:14px;border:1px solid #EFEDE8;">
+                      <div style="width:46px;height:46px;border-radius:13px;background:{{ ce.color }};display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:800;flex-shrink:0;">{{ ce.mono }}</div>
+                      <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1E;line-height:1.3;">{{ ce.title }}</div><div style="font-size:11px;color:#9B9890;margin-top:3px;">{{ ce.org }} · {{ ce.year }}</div></div>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.3 7.2 18.7l.9-5.4L4.2 9.5l5.4-.8L12 3z" stroke="#C98A1E" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isATab3 }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <sc-for list="{{ ad.matches }}" as="mt" hint-placeholder-count="3">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:14px;border:1px solid #EFEDE8;">
+                      <div style="flex:1;"><div style="font-size:13px;font-weight:700;color:#1A1A1E;">{{ mt.event }}</div><div style="font-size:11px;color:#9B9890;margin-top:3px;">{{ mt.date }}</div></div>
+                      <span style="font-size:10.5px;font-weight:700;color:{{ mt.rc }};background:{{ mt.rb }};padding:5px 12px;border-radius:99px;">{{ mt.result }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isATab4 }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <sc-for list="{{ ad.docs }}" as="dc" hint-placeholder-count="4">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:14px;border:1px solid #EFEDE8;">
+                      <div style="width:42px;height:42px;border-radius:11px;background:#F2F0EB;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13H7z" stroke="#9B9890" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="#9B9890" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div style="flex:1;font-size:13.5px;font-weight:600;color:#1A1A1E;">{{ dc.name }}</div>
+                      <span style="font-size:10.5px;font-weight:700;color:{{ dc.ic }};">{{ dc.status }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            </sc-if>
+
+            <!-- ===== AGENDA ===== -->
+            <sc-if value="{{ isAgenda }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:60px 20px 14px;background:#fff;border-bottom:1px solid #EEEBE5;">
+              <div style="font-size:22px;font-weight:800;color:#1A1A1E;">Agenda Kegiatan</div>
+              <div style="font-size:12.5px;color:#9B9890;margin-top:2px;">Juni 2026</div>
+              <div style="display:flex;gap:4px;margin-top:14px;background:#F1EFEA;border-radius:12px;padding:4px;">
+                <sc-for list="{{ agTabs }}" as="v" hint-placeholder-count="3"><button onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.label }}</button></sc-for>
+              </div>
+            </div>
+            <div style="padding:16px 18px;">
+              <sc-if value="{{ isAgKalender }}" hint-placeholder-val="{{ true }}">
+                <div style="background:#fff;border-radius:18px;padding:16px;border:1px solid #EFEDE8;margin-bottom:16px;">
+                  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px;">
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Sen</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Sel</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Rab</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Kam</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Jum</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Sab</div>
+                    <div style="text-align:center;font-size:10px;font-weight:700;color:#B6B3AC;">Min</div>
+                  </div>
+                  <sc-for list="{{ calWeeks }}" as="wk" hint-placeholder-count="5">
+                    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px;">
+                      <sc-for list="{{ wk }}" as="dy" hint-placeholder-count="7">
+                        <div style="aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:10px;background:{{ dy.bg }};">
+                          <span style="font-size:12.5px;font-weight:600;color:{{ dy.fg }};">{{ dy.day }}</span>
+                          <div style="width:5px;height:5px;border-radius:50%;background:{{ dy.dot }};margin-top:2px;"></div>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="font-size:14px;font-weight:700;color:#1A1A1E;margin:0 2px 11px;">Daftar Kegiatan</div>
+                <div style="display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ agendaList }}" as="a" hint-placeholder-count="5">
+                    <div style="display:flex;gap:13px;align-items:center;background:#fff;border-radius:15px;padding:12px;border:1px solid #EFEDE8;">
+                      <div style="width:48px;height:52px;border-radius:12px;background:{{ a.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:18px;font-weight:800;color:{{ a.fg }};line-height:1;">{{ a.day }}</span><span style="font-size:9.5px;font-weight:600;color:{{ a.fg }};text-transform:uppercase;">{{ a.mon }}</span></div>
+                      <div style="flex:1;min-width:0;"><span style="display:inline-block;font-size:9px;font-weight:700;color:{{ a.fg }};background:{{ a.bg }};padding:2px 8px;border-radius:99px;text-transform:uppercase;">{{ a.type }}</span><div style="font-size:12.5px;font-weight:600;color:#1A1A1E;margin-top:5px;line-height:1.3;">{{ a.title }}</div><div style="font-size:10.5px;color:#9B9890;margin-top:3px;">{{ a.meta }}</div></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isAgTimeline }}" hint-placeholder-val="{{ true }}">
+                <div style="position:relative;">
+                  <sc-for list="{{ agendaList }}" as="a" hint-placeholder-count="5">
+                    <div style="display:flex;gap:14px;padding-bottom:16px;">
+                      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:42px;">
+                        <div style="font-size:13px;font-weight:800;color:#1A1A1E;">{{ a.day }}</div>
+                        <div style="font-size:9px;color:#9B9890;text-transform:uppercase;">{{ a.mon }}</div>
+                        <div style="width:10px;height:10px;border-radius:50%;background:{{ a.fg }};margin-top:6px;"></div>
+                        <div style="flex:1;width:2px;background:#EAE7E1;margin-top:3px;"></div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:14px;padding:13px;border:1px solid #EFEDE8;margin-bottom:2px;"><span style="display:inline-block;font-size:9px;font-weight:700;color:{{ a.fg }};background:{{ a.bg }};padding:2px 8px;border-radius:99px;text-transform:uppercase;">{{ a.type }}</span><div style="font-size:13px;font-weight:600;color:#1A1A1E;margin-top:6px;line-height:1.35;">{{ a.title }}</div><div style="font-size:10.5px;color:#9B9890;margin-top:4px;">{{ a.meta }}</div></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isAgList }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ agendaList }}" as="a" hint-placeholder-count="5">
+                    <div style="background:#fff;border-radius:15px;padding:14px;border:1px solid #EFEDE8;border-left:4px solid {{ a.fg }};"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:9.5px;font-weight:700;color:{{ a.fg }};text-transform:uppercase;letter-spacing:.04em;">{{ a.type }}</span><span style="font-size:11px;color:#9B9890;font-weight:600;">{{ a.day }} {{ a.mon }}</span></div><div style="font-size:13.5px;font-weight:700;color:#1A1A1E;margin-top:6px;line-height:1.3;">{{ a.title }}</div><div style="font-size:11px;color:#9B9890;margin-top:4px;">{{ a.meta }}</div></div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            </sc-if>
+
+            <!-- ===== ANALYTICS ===== -->
+            <sc-if value="{{ isAnalytics }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:60px 20px 16px;background:#fff;border-bottom:1px solid #EEEBE5;">
+              <div style="font-size:22px;font-weight:800;color:#1A1A1E;">Statistik & Analitik</div>
+              <div style="font-size:12.5px;color:#9B9890;margin-top:2px;">Ringkasan data organisasi 2026</div>
+            </div>
+            <div style="padding:16px 18px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+                <sc-for list="{{ anKpis }}" as="k" hint-placeholder-count="4">
+                  <div style="background:#fff;border-radius:15px;padding:14px;border:1px solid #EFEDE8;box-shadow:0 5px 14px -12px rgba(0,0,0,.2);">
+                    <div style="font-size:24px;font-weight:800;color:{{ k.color }};line-height:1;">{{ k.value }}</div>
+                    <div style="font-size:11px;color:#8B8880;margin-top:6px;font-weight:500;">{{ k.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="background:#fff;border-radius:18px;padding:16px;border:1px solid #EFEDE8;margin-bottom:14px;">
+                <div style="font-size:13.5px;font-weight:700;color:#1A1A1E;margin-bottom:15px;">Atlet per Cabang Olahraga</div>
+                <sc-for list="{{ barCabang }}" as="b" hint-placeholder-count="6">
+                  <div style="margin-bottom:13px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:11.5px;color:#52514C;font-weight:500;">{{ b.label }}</span><span style="font-size:12px;font-weight:800;color:#1A1A1E;">{{ b.value }}</span></div>
+                    <div style="height:8px;border-radius:99px;background:#F1EFEA;overflow:hidden;"><div style="height:100%;border-radius:99px;background:{{ b.color }};width:{{ b.pct }};"></div></div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="background:#fff;border-radius:18px;padding:16px;border:1px solid #EFEDE8;margin-bottom:14px;">
+                <div style="font-size:13.5px;font-weight:700;color:#1A1A1E;margin-bottom:15px;">Atlet berdasarkan Gender</div>
+                <div style="display:flex;align-items:center;gap:20px;">
+                  <div style="position:relative;width:120px;height:120px;flex-shrink:0;background:conic-gradient(#2F6FB0 0 62%, #D98C3A 62% 100%);border-radius:50%;">
+                    <div style="position:absolute;inset:22px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:18px;font-weight:800;color:#1A1A1E;line-height:1;">1.842</span><span style="font-size:9px;color:#9B9890;">total</span></div>
+                  </div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:14px;">
+                    <sc-for list="{{ donutLegend }}" as="g" hint-placeholder-count="2">
+                      <div style="display:flex;align-items:center;gap:10px;"><div style="width:12px;height:12px;border-radius:4px;background:{{ g.color }};"></div><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#1A1A1E;">{{ g.label }}</div><div style="font-size:10.5px;color:#9B9890;">{{ g.value }} atlet</div></div><div style="font-size:14px;font-weight:800;color:{{ g.color }};">{{ g.pct }}</div></div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background:#fff;border-radius:18px;padding:16px;border:1px solid #EFEDE8;margin-bottom:14px;">
+                <div style="font-size:13.5px;font-weight:700;color:#1A1A1E;margin-bottom:16px;">Atlet per Kabupaten/Kecamatan</div>
+                <div style="display:flex;align-items:flex-end;gap:9px;height:130px;">
+                  <sc-for list="{{ barKec }}" as="k" hint-placeholder-count="6">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;">
+                      <div style="font-size:10px;font-weight:800;color:#52514C;margin-bottom:5px;">{{ k.value }}</div>
+                      <div style="width:100%;border-radius:7px 7px 0 0;background:linear-gradient(#D62828,#B81C1C);height:{{ k.h }};"></div>
+                      <div style="font-size:8.5px;color:#9B9890;margin-top:6px;text-align:center;line-height:1.1;">{{ k.label }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="background:#fff;border-radius:18px;padding:16px;border:1px solid #EFEDE8;">
+                <div style="font-size:13.5px;font-weight:700;color:#1A1A1E;margin-bottom:14px;">Prestasi per Tahun</div>
+                <svg viewBox="0 0 292 120" style="width:100%;height:auto;display:block;">
+                  <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D62828" stop-opacity="0.22"/><stop offset="1" stop-color="#D62828" stop-opacity="0"/></linearGradient></defs>
+                  <path d="{{ lineArea }}" fill="url(#lg)"></path>
+                  <polyline points="{{ linePts }}" fill="none" stroke="#D62828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                  <sc-for list="{{ lineDots }}" as="d" hint-placeholder-count="6">
+                    <circle cx="{{ d.cx }}" cy="{{ d.cy }}" r="3.5" fill="#fff" stroke="#D62828" stroke-width="2.2"></circle>
+                  </sc-for>
+                </svg>
+                <div style="display:flex;justify-content:space-between;margin-top:8px;padding:0 2px;">
+                  <sc-for list="{{ lineDots }}" as="d" hint-placeholder-count="6"><span style="font-size:9.5px;color:#9B9890;font-weight:600;">{{ d.year }}</span></sc-for>
+                </div>
+              </div>
+            </div>
+            </sc-if>
+
+            <!-- ===== PROFIL ===== -->
+            <sc-if value="{{ isProfil }}" hint-placeholder-val="{{ true }}">
+            <div style="background:linear-gradient(160deg,#E23232,#BC1D1D);padding:60px 22px 26px;border-radius:0 0 26px 26px;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.08);"></div>
+              <div style="display:flex;align-items:center;gap:15px;position:relative;">
+                <div style="width:68px;height:68px;border-radius:50%;background:#fff;padding:3px;flex-shrink:0;"><div style="width:100%;height:100%;border-radius:50%;background:#2F6FB0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;">{{ profUser.initials }}</div></div>
+                <div style="flex:1;"><div style="font-size:18px;font-weight:800;color:#fff;">{{ profUser.name }}</div><div style="font-size:12px;color:rgba(255,255,255,.85);margin-top:3px;">{{ profUser.role }}</div><div style="font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;">KONI Kabupaten Tangerang</div></div>
+                <button onClick="{{ noop }}" style="width:38px;height:38px;border-radius:11px;border:none;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 16.5V20h3.5L18 9.5 14.5 6 4 16.5z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div style="padding:20px 18px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#9B9890;text-transform:uppercase;margin:0 2px 10px;">Akun</div>
+              <div style="background:#fff;border-radius:16px;border:1px solid #EFEDE8;overflow:hidden;">
+                <sc-for list="{{ profMenu1 }}" as="m" hint-placeholder-count="2">
+                  <div onClick="{{ noop }}" style="display:flex;gap:13px;align-items:center;padding:14px;border-bottom:1px solid #F2F0EB;cursor:pointer;">
+                    <div style="width:38px;height:38px;border-radius:11px;background:{{ m.bg }};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:{{ m.color }};">{{ m.mono }}</div>
+                    <div style="flex:1;font-size:13.5px;font-weight:600;color:#1A1A1E;">{{ m.label }}</div>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#C9C6BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#9B9890;text-transform:uppercase;margin:20px 2px 10px;">Aplikasi</div>
+              <div style="background:#fff;border-radius:16px;border:1px solid #EFEDE8;overflow:hidden;">
+                <sc-for list="{{ profMenu2 }}" as="m" hint-placeholder-count="3">
+                  <div onClick="{{ noop }}" style="display:flex;gap:13px;align-items:center;padding:14px;border-bottom:1px solid #F2F0EB;cursor:pointer;">
+                    <div style="width:38px;height:38px;border-radius:11px;background:{{ m.bg }};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:{{ m.color }};">{{ m.mono }}</div>
+                    <div style="flex:1;font-size:13.5px;font-weight:600;color:#1A1A1E;">{{ m.label }}</div>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#C9C6BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </sc-for>
+              </div>
+              <button onClick="{{ onLogout }}" style="width:100%;margin-top:22px;height:52px;border-radius:15px;border:1.5px solid #F3C9C9;background:#FCEDED;color:#D62828;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 4h3a2 2 0 012 2v12a2 2 0 01-2 2h-3M10 8L6 12l4 4M6 12h11" stroke="#D62828" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Keluar
+              </button>
+              <div style="text-align:center;font-size:10.5px;color:#B6B3AC;margin-top:18px;">SIORG v1.0.0 · KONI Kabupaten Tangerang</div>
+            </div>
+            </sc-if>
+
+            <div data-screens-end="1"></div>
+          </div>
+
+          <!-- ===== BOTTOM NAV ===== -->
+          <div style="position:absolute;left:0;right:0;bottom:0;height:84px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-top:1px solid #EAE7E1;display:flex;align-items:flex-start;justify-content:space-around;padding:9px 8px 0;z-index:30;">
+            <button onClick="{{ navGo.dashboard }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;flex:1;color:{{ navColor.dashboard }};">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M3 10.5L12 3l9 7.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 9.5V20h14V9.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-size:9.5px;font-weight:600;">Dashboard</span>
+            </button>
+            <button onClick="{{ navGo.organisasi }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;flex:1;color:{{ navColor.organisasi }};">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.9"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+              <span style="font-size:9.5px;font-weight:600;">Organisasi</span>
+            </button>
+            <button onClick="{{ navGo.atlet }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;flex:1;color:{{ navColor.atlet }};">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.9"/><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+              <span style="font-size:9.5px;font-weight:600;">Atlet</span>
+            </button>
+            <button onClick="{{ navGo.agenda }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;flex:1;color:{{ navColor.agenda }};">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+              <span style="font-size:9.5px;font-weight:600;">Agenda</span>
+            </button>
+            <button onClick="{{ navGo.profil }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-family:inherit;flex:1;color:{{ navColor.profil }};">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="9.5" r="2.8" stroke="currentColor" stroke-width="1.9"/><path d="M6.5 19c.7-2.6 2.9-4 5.5-4s4.8 1.4 5.5 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+              <span style="font-size:9.5px;font-weight:600;">Profil</span>
+            </button>
+          </div>
+          <div style="position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:128px;height:5px;border-radius:99px;background:#1A1A1E;opacity:.85;z-index:40;"></div>
+        </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:820,&quot;height&quot;:1000},&quot;orgName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;KONI Kabupaten Tangerang&quot;},&quot;tagline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Membangun Prestasi Olahraga Digital&quot;},&quot;accentGold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F4A261&quot;,&quot;options&quot;:[&quot;#F4A261&quot;,&quot;#F6B73C&quot;,&quot;#E8A23D&quot;,&quot;#D9A441&quot;]}}">
+class Component extends DCLogic {
+  state = {
+    phase: 'splash', role: 'koni', tab: 'dashboard', dashV: 0,
+    analytics: false, cabang: null, cabangTab: 0, atlet: null, atletTab: 0, filter: 'Semua',
+    agendaView: 'kalender',
+  };
+
+  SPORTS = [
+    { id: 'pssi', name: 'Sepak Bola', abbr: 'PSSI', year: 1979, status: 'Aktif', atlet: 248, klub: 18, pelatih: 32, wasit: 14, color: '#2F6FB0' },
+    { id: 'pbsi', name: 'Bulu Tangkis', abbr: 'PBSI', year: 1981, status: 'Aktif', atlet: 196, klub: 22, pelatih: 28, wasit: 12, color: '#3C8C5A' },
+    { id: 'pasi', name: 'Atletik', abbr: 'PASI', year: 1980, status: 'Aktif', atlet: 172, klub: 9, pelatih: 18, wasit: 8, color: '#C25A2E' },
+    { id: 'prsi', name: 'Renang', abbr: 'PRSI', year: 1985, status: 'Aktif', atlet: 154, klub: 11, pelatih: 16, wasit: 9, color: '#2E8BA6' },
+    { id: 'ipsi', name: 'Pencak Silat', abbr: 'IPSI', year: 1977, status: 'Aktif', atlet: 148, klub: 16, pelatih: 20, wasit: 11, color: '#7A4DA0' },
+    { id: 'pbvsi', name: 'Bola Voli', abbr: 'PBVSI', year: 1982, status: 'Aktif', atlet: 132, klub: 14, pelatih: 15, wasit: 7, color: '#C98A1E' },
+    { id: 'forki', name: 'Karate', abbr: 'FORKI', year: 1984, status: 'Aktif', atlet: 118, klub: 13, pelatih: 14, wasit: 9, color: '#545B66' },
+    { id: 'ti', name: 'Taekwondo', abbr: 'TI', year: 1986, status: 'Aktif', atlet: 104, klub: 10, pelatih: 12, wasit: 6, color: '#B23A48' },
+    { id: 'perbasi', name: 'Bola Basket', abbr: 'PERBASI', year: 1983, status: 'Aktif', atlet: 96, klub: 8, pelatih: 11, wasit: 6, color: '#D2691E' },
+    { id: 'percasi', name: 'Catur', abbr: 'PERCASI', year: 1988, status: 'Pembinaan', atlet: 62, klub: 6, pelatih: 5, wasit: 4, color: '#3A3A40' },
+  ];
+
+  CLUBS = [
+    { name: 'Persikat Junior', sport: 'Sepak Bola', head: 'Dadang S.', atlet: 64, pelatih: 6, color: '#2F6FB0', initials: 'PJ' },
+    { name: 'PB Garuda', sport: 'Bulu Tangkis', head: 'Hartono', atlet: 38, pelatih: 4, color: '#3C8C5A', initials: 'PG' },
+    { name: 'Tirta Tangerang', sport: 'Renang', head: 'Siska A.', atlet: 52, pelatih: 5, color: '#2E8BA6', initials: 'TT' },
+    { name: 'PS Bina Satria', sport: 'Pencak Silat', head: 'Gunawan', atlet: 45, pelatih: 4, color: '#7A4DA0', initials: 'BS' },
+    { name: 'Lemkari Tangerang', sport: 'Karate', head: 'Fauzi R.', atlet: 30, pelatih: 3, color: '#545B66', initials: 'LK' },
+    { name: 'Voli Mandiri', sport: 'Bola Voli', head: 'Endang', atlet: 41, pelatih: 3, color: '#C98A1E', initials: 'VM' },
+  ];
+
+  OFFICIALS = [
+    { name: 'H. Ahmad Subagja', role: 'Ketua Umum', period: '2025–2029', initials: 'AS', color: '#D62828' },
+    { name: 'Drs. Bambang W.', role: 'Wakil Ketua', period: '2025–2029', initials: 'BW', color: '#2F6FB0' },
+    { name: 'Rina Marlina, S.E.', role: 'Sekretaris', period: '2025–2029', initials: 'RM', color: '#3C8C5A' },
+    { name: 'Hendra Gunawan', role: 'Bendahara', period: '2025–2029', initials: 'HG', color: '#C98A1E' },
+    { name: 'Yusuf Maulana', role: 'Bidang Pembinaan', period: '2025–2029', initials: 'YM', color: '#7A4DA0' },
+    { name: 'Sri Wahyuni', role: 'Bidang Prestasi', period: '2025–2029', initials: 'SW', color: '#2E8BA6' },
+  ];
+
+  ATHLETES = [
+    { id: 'a1', name: 'Rizky Pratama', initials: 'RP', sport: 'Sepak Bola', sportColor: '#2F6FB0', club: 'Persikat Junior', cat: 'Senior', gender: 'L', kec: 'Tigaraksa', status: 'Aktif', nik: '3603 0312 0300 0007', birth: 'Tangerang, 12 Mar 2003', age: '23 th', addr: 'Kp. Pasir RT 03, Tigaraksa', phone: '0812-3456-7890', email: 'rizky.p@mail.com', height: '176 cm', weight: '68 kg', blood: 'O', coach: 'Coach Yusuf M.' },
+    { id: 'a2', name: 'Siti Nurhaliza', initials: 'SN', sport: 'Bulu Tangkis', sportColor: '#3C8C5A', club: 'PB Garuda', cat: 'Remaja', gender: 'P', kec: 'Cikupa', status: 'Aktif', nik: '3603 4506 0700 0012', birth: 'Tangerang, 05 Jul 2007', age: '18 th', addr: 'Perum Citra Raya, Cikupa', phone: '0813-2233-4455', email: 'siti.n@mail.com', height: '162 cm', weight: '52 kg', blood: 'B', coach: 'Coach Lia S.' },
+    { id: 'a3', name: 'Andi Saputra', initials: 'AS', sport: 'Atletik', sportColor: '#C25A2E', club: 'Lari Sehat TNG', cat: 'Senior', gender: 'L', kec: 'Pasar Kemis', status: 'Aktif', nik: '3603 1809 0100 0003', birth: 'Tangerang, 18 Sep 2001', age: '24 th', addr: 'Kuta Bumi, Pasar Kemis', phone: '0857-9988-7766', email: 'andi.s@mail.com', height: '180 cm', weight: '70 kg', blood: 'A', coach: 'Coach Rahmat' },
+    { id: 'a4', name: 'Dewi Lestari', initials: 'DL', sport: 'Renang', sportColor: '#2E8BA6', club: 'Tirta Tangerang', cat: 'Junior', gender: 'P', kec: 'Kelapa Dua', status: 'Aktif', nik: '3603 2201 0800 0021', birth: 'Tangerang, 22 Jan 2008', age: '18 th', addr: 'Islamic Village, Kelapa Dua', phone: '0812-7766-5544', email: 'dewi.l@mail.com', height: '168 cm', weight: '55 kg', blood: 'AB', coach: 'Coach Putri' },
+    { id: 'a5', name: 'Bagus Setiawan', initials: 'BS', sport: 'Pencak Silat', sportColor: '#7A4DA0', club: 'PS Bina Satria', cat: 'Senior', gender: 'L', kec: 'Balaraja', status: 'Aktif', nik: '3603 1005 0200 0009', birth: 'Tangerang, 10 Mei 2002', age: '24 th', addr: 'Saga, Balaraja', phone: '0856-1122-3344', email: 'bagus.s@mail.com', height: '170 cm', weight: '65 kg', blood: 'O', coach: 'Coach Wawan' },
+    { id: 'a6', name: 'Maya Putri', initials: 'MP', sport: 'Bola Voli', sportColor: '#C98A1E', club: 'Voli Mandiri', cat: 'Remaja', gender: 'P', kec: 'Kronjo', status: 'Cedera', nik: '3603 3008 0600 0017', birth: 'Tangerang, 30 Agu 2006', age: '19 th', addr: 'Pagedangan Ilir, Kronjo', phone: '0821-4455-6677', email: 'maya.p@mail.com', height: '174 cm', weight: '60 kg', blood: 'B', coach: 'Coach Endang' },
+    { id: 'a7', name: 'Fajar Ramadhan', initials: 'FR', sport: 'Karate', sportColor: '#545B66', club: 'Lemkari Tangerang', cat: 'Senior', gender: 'L', kec: 'Curug', status: 'Aktif', nik: '3603 1412 0000 0001', birth: 'Tangerang, 14 Des 2000', age: '25 th', addr: 'Binong, Curug', phone: '0838-9900-1122', email: 'fajar.r@mail.com', height: '172 cm', weight: '67 kg', blood: 'A', coach: 'Coach Fauzi' },
+    { id: 'a8', name: 'Intan Permata', initials: 'IP', sport: 'Taekwondo', sportColor: '#B23A48', club: 'TC Tangerang', cat: 'Junior', gender: 'P', kec: 'Legok', status: 'Aktif', nik: '3603 0203 0900 0025', birth: 'Tangerang, 02 Mar 2009', age: '17 th', addr: 'Bojong Kamal, Legok', phone: '0812-3344-5566', email: 'intan.p@mail.com', height: '165 cm', weight: '54 kg', blood: 'O', coach: 'Coach Dewi' },
+  ];
+
+  componentDidMount() {
+    this._t = setTimeout(() => { if (this.state.phase === 'splash') this.setState({ phase: 'login' }); }, 2400);
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+
+  ROLES = [
+    { key: 'admin', label: 'Super Admin', desc: 'Kelola seluruh data', name: 'Admin Sistem' },
+    { key: 'koni', label: 'Pengurus KONI', desc: 'Seluruh cabang olahraga', name: 'Pak Ahmad' },
+    { key: 'caborg', label: 'Pengurus Cabor', desc: 'Kelola data cabornya', name: 'Bu Rina' },
+    { key: 'klub', label: 'Pengurus Klub', desc: 'Kelola anggota klub', name: 'Pak Dadang' },
+    { key: 'atlet', label: 'Atlet', desc: 'Profil & prestasi', name: 'Rizky' },
+    { key: 'pelatih', label: 'Pelatih', desc: 'Atlet binaan', name: 'Coach Yusuf' },
+    { key: 'wasit', label: 'Wasit / Juri', desc: 'Lisensi & penugasan', name: 'Pak Hendra' },
+  ];
+
+  KPIS = [
+    { label: 'Cabang Olahraga', value: '28', mono: 'CO', color: '#D62828' },
+    { label: 'Atlet', value: '1.842', mono: 'AT', color: '#2F6FB0' },
+    { label: 'Pelatih', value: '214', mono: 'PL', color: '#3C8C5A' },
+    { label: 'Wasit / Juri', value: '96', mono: 'WS', color: '#C98A1E' },
+    { label: 'Klub', value: '134', mono: 'KL', color: '#7A4DA0' },
+    { label: 'Pengurus', value: '48', mono: 'PG', color: '#2E8BA6' },
+  ];
+
+  QUICK = [
+    { label: 'Data Atlet', mono: 'AT', color: '#2F6FB0', bg: '#EAF1F9', go: 'atlet' },
+    { label: 'Data Pelatih', mono: 'PL', color: '#3C8C5A', bg: '#E8F3EC', go: 'atlet' },
+    { label: 'Data Wasit', mono: 'WS', color: '#C98A1E', bg: '#FBF2E0', go: 'atlet' },
+    { label: 'Data Klub', mono: 'KL', color: '#7A4DA0', bg: '#F1EBF7', go: 'organisasi' },
+    { label: 'Organisasi', mono: 'OR', color: '#D62828', bg: '#FBE9E9', go: 'organisasi' },
+    { label: 'Prestasi', mono: 'PR', color: '#C25A2E', bg: '#FBEDE5', go: 'analytics' },
+    { label: 'Analytics', mono: 'AN', color: '#2E8BA6', bg: '#E4F2F5', go: 'analytics' },
+    { label: 'Agenda', mono: 'AG', color: '#52514C', bg: '#F0EFEC', go: 'agenda' },
+  ];
+
+  NEWS = [
+    { title: 'KONI Targetkan 15 Emas di Porprov Banten 2026', date: '14 Jun 2026', tag: 'PRESTASI', c1: '#D62828', c2: '#BC1D1D' },
+    { title: 'Program Talent Scouting Genjot Atlet Muda Daerah', date: '11 Jun 2026', tag: 'PEMBINAAN', c1: '#2F6FB0', c2: '#285F97' },
+    { title: 'Pelantikan Pengurus Cabor Periode 2025–2029', date: '08 Jun 2026', tag: 'ORGANISASI', c1: '#C98A1E', c2: '#A8731A' },
+  ];
+
+  AGENDA = [
+    { day: '18', mon: 'Jun', type: 'Seleksi', title: 'Seleksi Atlet PORPROV Banten', meta: 'GOR Tigaraksa · 08:00', bg: '#EAF1F9', fg: '#2F6FB0' },
+    { day: '21', mon: 'Jun', type: 'Kejuaraan', title: 'Kejuaraan Bulu Tangkis Antar Klub', meta: 'GOR Cikupa · 09:00', bg: '#FBE9E9', fg: '#D62828' },
+    { day: '25', mon: 'Jun', type: 'Pelatihan', title: 'Pelatihan Wasit Sepak Bola Lisensi C', meta: 'Aula KONI · 13:00', bg: '#E8F3EC', fg: '#3C8C5A' },
+    { day: '28', mon: 'Jun', type: 'Rapat', title: 'Rapat Koordinasi Pengurus Cabor', meta: 'Kantor KONI · 10:00', bg: '#FBF2E0', fg: '#C98A1E' },
+    { day: '02', mon: 'Jul', type: 'Kejuaraan', title: 'Kejuaraan Renang Junior Terbuka', meta: 'Kolam Kelapa Dua · 07:30', bg: '#FBE9E9', fg: '#D62828' },
+  ];
+
+  RINGKASAN = [
+    { label: 'Atlet baru terdaftar', value: '+126', color: '#2F6FB0' },
+    { label: 'Lisensi diperbarui', value: '38', color: '#3C8C5A' },
+    { label: 'Medali diraih', value: '74', color: '#C98A1E' },
+    { label: 'Agenda mendatang', value: '12', color: '#D62828' },
+  ];
+
+  setRole(r) { this.setState({ role: r }); }
+  setDash(n) { this.setState({ dashV: n }); }
+  onLogin = () => this.setState({ phase: 'app', tab: 'dashboard', analytics: false, cabang: null, atlet: null });
+  setTab(t) { this.setState({ tab: t, analytics: false, cabang: null, atlet: null }); }
+  jump(name) {
+    if (name === 'splash') this.setState({ phase: 'splash' });
+    else if (name === 'login') this.setState({ phase: 'login' });
+    else if (name === 'analytics') this.setState({ phase: 'app', analytics: true, cabang: null, atlet: null });
+    else this.setState({ phase: 'app', tab: name, analytics: false, cabang: null, atlet: null });
+  }
+  openCabang(id) { this.setState({ cabang: id, cabangTab: 0 }); }
+  closeCabang() { this.setState({ cabang: null }); }
+  openAtlet(id) { this.setState({ atlet: id, atletTab: 0 }); }
+  closeAtlet() { this.setState({ atlet: null }); }
+  setFilter(f) { this.setState({ filter: f }); }
+  setAgendaView(v) { this.setState({ agendaView: v }); }
+
+  renderVals() {
+    const s = this.state;
+    const inApp = s.phase === 'app';
+    let screen;
+    if (!inApp) screen = s.phase;
+    else if (s.atlet != null) screen = 'atletDetail';
+    else if (s.cabang != null) screen = 'cabangDetail';
+    else if (s.analytics) screen = 'analytics';
+    else screen = s.tab;
+
+    const roleObj = this.ROLES.find(r => r.key === s.role) || this.ROLES[1];
+
+    const railBtn = (active) => 'text-align:left;padding:9px 12px;border-radius:11px;border:1px solid ' +
+      (active ? '#D62828' : '#2A2B31') + ';background:' + (active ? 'rgba(214,40,40,.16)' : '#191A20') +
+      ';color:' + (active ? '#fff' : '#B9BAC2') + ';cursor:pointer;font-family:inherit;display:flex;flex-direction:column;gap:2px;transition:all .15s;';
+    const segBtn = (active) => 'flex:1;padding:9px 4px;border-radius:10px;border:1px solid ' +
+      (active ? '#D62828' : '#2A2B31') + ';background:' + (active ? '#D62828' : '#191A20') +
+      ';color:' + (active ? '#fff' : '#B9BAC2') + ';cursor:pointer;font-family:inherit;font-size:11px;font-weight:600;';
+    const chip = (active) => 'padding:6px 11px;border-radius:99px;border:1px solid ' +
+      (active ? '#D62828' : '#2A2B31') + ';background:' + (active ? '#D62828' : '#191A20') +
+      ';color:' + (active ? '#fff' : '#9B9CA5') + ';cursor:pointer;font-family:inherit;font-size:11px;font-weight:600;';
+
+    const navColor = {
+      dashboard: (screen === 'dashboard') ? '#D62828' : '#A7A39B',
+      organisasi: (screen === 'organisasi' || screen === 'cabangDetail') ? '#D62828' : '#A7A39B',
+      atlet: (screen === 'atlet' || screen === 'atletDetail') ? '#D62828' : '#A7A39B',
+      agenda: (screen === 'agenda') ? '#D62828' : '#A7A39B',
+      profil: (screen === 'profil') ? '#D62828' : '#A7A39B',
+    };
+
+    const spark = [38, 52, 46, 64, 58, 76, 70, 88, 96].map((h, i) => ({
+      h: h + '%', fill: i >= 7 ? (this.props.accentGold || '#F4A261') : 'rgba(255,255,255,.28)'
+    }));
+
+    const tabStyle = (act) => 'padding:8px 15px;border-radius:99px;border:none;background:' + (act ? '#D62828' : '#F0EEE9') + ';color:' + (act ? '#fff' : '#6B6A64') + ';font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;';
+    const chip2 = (act) => 'padding:7px 14px;border-radius:99px;border:1px solid ' + (act ? '#D62828' : '#E5E2DC') + ';background:' + (act ? '#D62828' : '#fff') + ';color:' + (act ? '#fff' : '#6B6A64') + ';font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;';
+    const segLite = (act) => 'flex:1;padding:9px;border:none;border-radius:9px;background:' + (act ? '#fff' : 'transparent') + ';color:' + (act ? '#1A1A1E' : '#8B8880') + ';font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;box-shadow:' + (act ? '0 2px 8px -2px rgba(0,0,0,.18)' : 'none') + ';';
+    const sB = (st) => st === 'Aktif' ? { c: '#3C8C5A', b: '#E8F3EC' } : st === 'Pembinaan' ? { c: '#C98A1E', b: '#FBF2E0' } : { c: '#C25A2E', b: '#FBEDE5' };
+
+    // --- Organisasi ---
+    const cabangList = this.SPORTS.map(c => ({ ...c, sc: sB(c.status).c, sb: sB(c.status).b, onOpen: () => this.openCabang(c.id) }));
+    const cSel = this.SPORTS.find(c => c.id === s.cabang);
+    let cab = null;
+    if (cSel) {
+      const pres = Math.round(cSel.atlet * 0.18);
+      cab = {
+        ...cSel, sc: sB(cSel.status).c, sb: sB(cSel.status).b,
+        visi: 'Menjadikan ' + cSel.name + ' Kabupaten Tangerang sebagai barometer prestasi di tingkat provinsi dan nasional.',
+        misi: ['Membina atlet berprestasi sejak usia dini secara berjenjang.', 'Meningkatkan kompetensi pelatih & wasit bersertifikat.', 'Memperluas jaringan klub di seluruh kecamatan.'],
+        sejarah: 'Cabang olahraga ' + cSel.name + ' resmi bernaung di bawah KONI Kabupaten Tangerang sejak tahun ' + cSel.year + ', dan terus berkembang membina ratusan atlet hingga tingkat nasional.',
+        bars: [
+          { label: 'Jumlah Atlet', value: '' + cSel.atlet, pct: Math.round(cSel.atlet / 248 * 100) + '%', color: '#2F6FB0' },
+          { label: 'Jumlah Klub', value: '' + cSel.klub, pct: Math.round(cSel.klub / 22 * 100) + '%', color: '#7A4DA0' },
+          { label: 'Total Prestasi', value: '' + pres, pct: Math.round(pres / 45 * 100) + '%', color: '#C98A1E' },
+        ],
+      };
+    }
+    const cabTabs = ['Profil', 'Pengurus', 'Klub', 'Statistik'].map((t, i) => ({ label: t, style: tabStyle(i === s.cabangTab), onClick: () => this.setState({ cabangTab: i }) }));
+
+    // --- Atlet ---
+    const mF = (a) => s.filter === 'Semua' ? true : s.filter === 'Putra' ? a.gender === 'L' : s.filter === 'Putri' ? a.gender === 'P' : a.status === s.filter;
+    const atletList = this.ATHLETES.filter(mF).map(a => ({ ...a, genderLabel: a.gender === 'L' ? 'Putra' : 'Putri', sc: sB(a.status).c, sb: sB(a.status).b, onOpen: () => this.openAtlet(a.id) }));
+    const atletChips = ['Semua', 'Putra', 'Putri', 'Aktif', 'Cedera'].map(f => ({ label: f, style: chip2(f === s.filter), onClick: () => this.setFilter(f) }));
+
+    const aSel = this.ATHLETES.find(a => a.id === s.atlet);
+    let ad = null;
+    if (aSel) {
+      const sp = aSel.sport;
+      ad = {
+        ...aSel, genderLabel: aSel.gender === 'L' ? 'Putra' : 'Putri', sc: sB(aSel.status).c, sb: sB(aSel.status).b,
+        ach: [
+          { year: '2025', title: 'Juara 1 PORPROV Banten — ' + sp, level: 'Provinsi', mc: '#F6B73C', ml: 'Emas' },
+          { year: '2024', title: 'Juara 2 Kejurnas Junior — ' + sp, level: 'Nasional', mc: '#C2C6CE', ml: 'Perak' },
+          { year: '2023', title: 'Juara 1 Kejurkab Tangerang', level: 'Kab/Kota', mc: '#F6B73C', ml: 'Emas' },
+          { year: '2022', title: 'Juara 3 O2SN Provinsi Banten', level: 'Provinsi', mc: '#CD7F47', ml: 'Perunggu' },
+        ],
+        certs: [
+          { title: 'Sertifikat Atlet Berprestasi', org: 'KONI Kab. Tangerang', year: '2025', mono: 'BP', color: '#D62828' },
+          { title: 'Sertifikat Clean Sport (Anti-Doping)', org: 'LADI', year: '2024', mono: 'CS', color: '#3C8C5A' },
+        ],
+        matches: [
+          { date: '12 Mei 2025', event: 'Final PORPROV Banten', result: 'Menang', rc: '#3C8C5A', rb: '#E8F3EC' },
+          { date: '08 Mar 2025', event: 'Semifinal Kejurkab Tangerang', result: 'Menang', rc: '#3C8C5A', rb: '#E8F3EC' },
+          { date: '21 Nov 2024', event: 'Final Kejurnas Junior', result: 'Kalah', rc: '#C25A2E', rb: '#FBEDE5' },
+        ],
+        docs: [
+          { name: 'KTP', status: 'Terverifikasi', ic: '#3C8C5A' },
+          { name: 'Kartu Keluarga', status: 'Terverifikasi', ic: '#3C8C5A' },
+          { name: 'Pas Foto', status: 'Lengkap', ic: '#3C8C5A' },
+          { name: 'Ijazah', status: 'Menunggu', ic: '#C98A1E' },
+        ],
+      };
+    }
+    const atletTabs = ['Biodata', 'Prestasi', 'Sertifikasi', 'Pertandingan', 'Dokumen'].map((t, i) => ({ label: t, style: tabStyle(i === s.atletTab), onClick: () => this.setState({ atletTab: i }) }));
+
+    // --- Agenda ---
+    const eventDays = { 18: '#D62828', 21: '#2F6FB0', 25: '#3C8C5A', 28: '#C98A1E' };
+    const cells = [];
+    for (let d = 1; d <= 30; d++) cells.push({ day: '' + d, dot: eventDays[d] || 'transparent', bg: d === 16 ? '#D62828' : 'transparent', fg: d === 16 ? '#fff' : '#3A3A40' });
+    const calWeeks = []; let cur = [];
+    cells.forEach(c => { cur.push(c); if (cur.length === 7) { calWeeks.push(cur); cur = []; } });
+    if (cur.length) { while (cur.length < 7) cur.push({ day: '', dot: 'transparent', bg: 'transparent', fg: 'transparent' }); calWeeks.push(cur); }
+    const agendaList = this.AGENDA.map(a => ({ ...a, onClick: () => {} }));
+    const agTabs = ['Kalender', 'Timeline', 'List'].map(v => ({ label: v, style: segLite(v.toLowerCase() === s.agendaView), onClick: () => this.setAgendaView(v.toLowerCase()) }));
+
+    // --- Analytics ---
+    const barCabang = [['Sepak Bola', 248, '#2F6FB0'], ['Bulu Tangkis', 196, '#3C8C5A'], ['Atletik', 172, '#C25A2E'], ['Renang', 154, '#2E8BA6'], ['Pencak Silat', 148, '#7A4DA0'], ['Bola Voli', 132, '#C98A1E']].map(([l, v, c]) => ({ label: l, value: '' + v, pct: Math.round(v / 248 * 100) + '%', color: c }));
+    const donutLegend = [{ label: 'Putra', value: '1.142', pct: '62%', color: '#2F6FB0' }, { label: 'Putri', value: '700', pct: '38%', color: '#D98C3A' }];
+    const barKec = [['Tigaraksa', 286], ['Cikupa', 242], ['Ps. Kemis', 218], ['Kelapa Dua', 196], ['Balaraja', 164], ['Curug', 138]].map(([l, v]) => ({ label: l, value: '' + v, h: Math.round(v / 286 * 100) + '%' }));
+    const yv = [42, 58, 71, 96, 118, 74], yl = ['2021', '2022', '2023', '2024', '2025', '2026'];
+    const W = 276, H = 104, mY = 130;
+    const pts = yv.map((v, i) => ({ x: 8 + i * (W / 5), y: H - (v / mY) * H + 4 }));
+    const linePts = pts.map(p => p.x.toFixed(1) + ',' + p.y.toFixed(1)).join(' ');
+    const lineArea = 'M' + pts.map(p => p.x.toFixed(1) + ' ' + p.y.toFixed(1)).join(' L ') + ' L ' + pts[pts.length - 1].x.toFixed(1) + ' ' + (H + 4) + ' L ' + pts[0].x.toFixed(1) + ' ' + (H + 4) + ' Z';
+    const lineDots = pts.map((p, i) => ({ cx: p.x.toFixed(1), cy: p.y.toFixed(1), year: yl[i], val: '' + yv[i] }));
+    const anKpis = [{ label: 'Total Atlet', value: '1.842', color: '#2F6FB0' }, { label: 'Total Klub', value: '134', color: '#7A4DA0' }, { label: 'Total Pelatih', value: '214', color: '#3C8C5A' }, { label: 'Total Wasit', value: '96', color: '#C98A1E' }];
+
+    // --- Profil ---
+    const profUser = { name: roleObj.name, role: roleObj.label, initials: (roleObj.name.split(' ').map(w => w[0]).join('').slice(0, 2)).toUpperCase() };
+    const profMenu1 = [{ label: 'Ubah Profil', mono: 'UP', color: '#2F6FB0', bg: '#EAF1F9' }, { label: 'Ganti Password', mono: 'GP', color: '#7A4DA0', bg: '#F1EBF7' }];
+    const profMenu2 = [{ label: 'Pengaturan', mono: 'PG', color: '#52514C', bg: '#F0EFEC' }, { label: 'Pusat Bantuan', mono: 'PB', color: '#3C8C5A', bg: '#E8F3EC' }, { label: 'Tentang Aplikasi', mono: 'TA', color: '#C98A1E', bg: '#FBF2E0' }];
+
+    return {
+      isSplash: s.phase === 'splash', isLogin: s.phase === 'login', inApp,
+      isDashboard: screen === 'dashboard', isOrganisasi: screen === 'organisasi',
+      isAtlet: screen === 'atlet', isAgenda: screen === 'agenda', isProfil: screen === 'profil',
+      isCabangDetail: screen === 'cabangDetail', isAtletDetail: screen === 'atletDetail', isAnalytics: screen === 'analytics',
+      isDashV0: s.dashV === 0, isDashV1: s.dashV === 1, isDashV2: s.dashV === 2,
+
+      orgName: this.props.orgName || 'KONI Kabupaten Tangerang',
+      tagline: this.props.tagline || 'Membangun Prestasi Olahraga Digital',
+      accentGold: this.props.accentGold || '#F4A261',
+      statusColor: (s.phase === 'splash') ? '#fff' : '#1A1A1E',
+
+      roleLabel: roleObj.label, greetingName: roleObj.name,
+      dateLabel: 'Selasa, 16 Juni 2026',
+
+      kpis: this.KPIS, quickMenu: this.QUICK.map(q => ({ ...q, onClick: () => this.jump(q.go) })),
+      news: this.NEWS, agendaPreview: this.AGENDA.slice(0, 3), ringkasan: this.RINGKASAN, spark,
+
+      noop: () => {},
+      onLogin: this.onLogin,
+      goAgenda: () => this.jump('agenda'),
+      navGo: {
+        dashboard: () => this.setTab('dashboard'), organisasi: () => this.setTab('organisasi'),
+        atlet: () => this.setTab('atlet'), agenda: () => this.setTab('agenda'), profil: () => this.setTab('profil'),
+      },
+      navColor,
+
+      roleItems: this.ROLES.map(r => ({ ...r, style: railBtn(r.key === s.role), onClick: () => this.setRole(r.key) })),
+      dashItems: [
+        { label: 'Kartu', style: segBtn(s.dashV === 0), onClick: () => this.setDash(0) },
+        { label: 'Hero', style: segBtn(s.dashV === 1), onClick: () => this.setDash(1) },
+        { label: 'Ringkas', style: segBtn(s.dashV === 2), onClick: () => this.setDash(2) },
+      ],
+      jumpItems: [
+        ['Splash', 'splash'], ['Login', 'login'], ['Dashboard', 'dashboard'], ['Organisasi', 'organisasi'],
+        ['Atlet', 'atlet'], ['Agenda', 'agenda'], ['Profil', 'profil'], ['Analytics', 'analytics'],
+      ].map(([label, name]) => ({ label, style: chip(screen === name), onClick: () => this.jump(name) })),
+
+      cabangList, cab, cabTabs,
+      isCabTab0: s.cabangTab === 0, isCabTab1: s.cabangTab === 1, isCabTab2: s.cabangTab === 2, isCabTab3: s.cabangTab === 3,
+      officials: this.OFFICIALS, clubsList: this.CLUBS,
+      closeCabang: () => this.closeCabang(),
+
+      atletList, atletChips, atletCount: '' + atletList.length,
+      ad, atletTabs,
+      isATab0: s.atletTab === 0, isATab1: s.atletTab === 1, isATab2: s.atletTab === 2, isATab3: s.atletTab === 3, isATab4: s.atletTab === 4,
+      closeAtlet: () => this.closeAtlet(),
+
+      agTabs, calWeeks, agendaList,
+      isAgKalender: s.agendaView === 'kalender', isAgTimeline: s.agendaView === 'timeline', isAgList: s.agendaView === 'list',
+
+      barCabang, donutLegend, barKec, linePts, lineArea, lineDots, anKpis,
+
+      profUser, profMenu1, profMenu2, onLogout: () => this.setState({ phase: 'login' }),
+    };
+  }
+}
+</script>
+</body>
+</html>

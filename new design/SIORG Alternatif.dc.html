@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+  body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;}
+  .scl::-webkit-scrollbar{width:0;height:0;display:none;}
+  .scl{scrollbar-width:none;}
+</style>
+</helmet>
+
+<div style="min-height:100vh;width:100%;background:linear-gradient(180deg,#EBEDF1,#E3E6EB);padding:46px 48px 80px;font-family:'Plus Jakarta Sans',sans-serif;">
+
+  <!-- page header -->
+  <div style="max-width:1040px;margin:0 auto 14px;">
+    <div style="display:flex;align-items:center;gap:13px;">
+      <div style="width:40px;height:40px;border-radius:11px;background:#1C2A45;display:flex;align-items:center;justify-content:center;"><img src="assets/koni-logo.png" style="width:30px;height:30px;object-fit:contain;"/></div>
+      <div>
+        <div style="font-size:21px;font-weight:800;color:#1C2A45;letter-spacing:-.01em;">SIORG · Eksplorasi Visual</div>
+        <div style="font-size:13px;color:#6B7280;margin-top:1px;">Dua arah berbeda untuk Dashboard & Detail Atlet — pilih satu untuk diterapkan ke seluruh app</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:18px;align-items:center;">
+      <span style="font-size:11px;font-weight:600;color:#6B7280;">Palet:</span>
+      <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #E2E5EA;border-radius:99px;padding:5px 11px;"><span style="width:13px;height:13px;border-radius:4px;background:#D62828;"></span><span style="font-size:11px;font-weight:600;color:#1C2A45;">Merah KONI</span></div>
+      <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #E2E5EA;border-radius:99px;padding:5px 11px;"><span style="width:13px;height:13px;border-radius:4px;background:#1C2A45;"></span><span style="font-size:11px;font-weight:600;color:#1C2A45;">Navy</span></div>
+      <div style="display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #E2E5EA;border-radius:99px;padding:5px 11px;"><span style="width:13px;height:13px;border-radius:4px;background:#9AA3B2;"></span><span style="font-size:11px;font-weight:600;color:#1C2A45;">Abu</span></div>
+    </div>
+  </div>
+
+  <!-- ============================= ARAH A ============================= -->
+  <div style="max-width:1040px;margin:36px auto 0;">
+    <div style="display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #D5D9E0;padding-bottom:14px;margin-bottom:26px;">
+      <div style="font-size:13px;font-weight:800;color:#fff;background:#1C2A45;border-radius:8px;padding:4px 10px;letter-spacing:.04em;">ARAH A</div>
+      <div style="font-size:18px;font-weight:800;color:#1C2A45;">Bersih &amp; Airy</div>
+      <div style="font-size:13px;color:#6B7280;">Pemerintahan modern · banyak ruang putih · garis rambut · tab garis bawah · merah sangat hemat</div>
+    </div>
+
+    <div style="display:flex;gap:34px;flex-wrap:wrap;">
+
+      <!-- A · DASHBOARD -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#1C2A45;margin-bottom:11px;letter-spacing:.02em;">Dashboard</div>
+        <div style="width:402px;height:824px;background:#0E1320;border-radius:52px;padding:10px;box-shadow:0 40px 80px -36px rgba(28,42,69,.55),0 0 0 2px #C9CDD6;position:relative;">
+          <div style="position:relative;width:382px;height:804px;border-radius:43px;overflow:hidden;background:#FFFFFF;">
+            <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#0E1320;border-radius:18px;z-index:50;"></div>
+            <div style="position:absolute;top:0;left:0;right:0;height:50px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:17px 26px 0;"><div style="font-size:13.5px;font-weight:700;color:#1C2A45;">09:41</div><div style="display:flex;gap:5px;align-items:center;color:#1C2A45;"><div style="width:23px;height:11px;border:1.4px solid currentColor;border-radius:3px;position:relative;"><div style="position:absolute;inset:1.4px;width:72%;background:currentColor;border-radius:1px;"></div></div></div></div>
+
+            <div style="padding:60px 22px 0;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:10.5px;font-weight:700;letter-spacing:.14em;color:#9AA3B2;text-transform:uppercase;">Selasa, 16 Juni 2026</div>
+                  <div style="font-size:21px;font-weight:800;color:#1C2A45;margin-top:5px;letter-spacing:-.01em;white-space:nowrap;">Halo, Pak Ahmad</div>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;">
+                  <div style="width:40px;height:40px;border-radius:50%;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z" stroke="#1C2A45" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="#1C2A45" stroke-width="1.7"/></svg></div>
+                  <div style="width:40px;height:40px;border-radius:50%;background:#1C2A45;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700;">PA</div>
+                </div>
+              </div>
+
+              <div style="margin-top:26px;">
+                <div style="font-size:12px;color:#737B89;font-weight:500;">Total atlet terdaftar</div>
+                <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px;">
+                  <div style="font-size:44px;font-weight:800;color:#1C2A45;letter-spacing:-.02em;line-height:1;">1.842</div>
+                  <div style="font-size:12.5px;font-weight:700;color:#D62828;">+126</div>
+                </div>
+                <div style="font-size:11.5px;color:#9AA3B2;margin-top:6px;">pertumbuhan +7,3% dari tahun lalu</div>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ECEEF1;border:1px solid #ECEEF1;border-radius:16px;overflow:hidden;margin-top:22px;">
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#1C2A45;line-height:1;">28</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Cabang</div></div>
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#1C2A45;line-height:1;">214</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Pelatih</div></div>
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#1C2A45;line-height:1;">96</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Wasit</div></div>
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#1C2A45;line-height:1;">134</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Klub</div></div>
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#1C2A45;line-height:1;">48</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Pengurus</div></div>
+                <div style="background:#fff;padding:15px 13px;"><div style="font-size:20px;font-weight:800;color:#D62828;line-height:1;">74</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Prestasi '26</div></div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;margin-top:26px;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:9px;width:60px;"><div style="width:48px;height:48px;border-radius:15px;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="#1C2A45" stroke-width="1.7"/><path d="M5.5 20c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6" stroke="#1C2A45" stroke-width="1.7" stroke-linecap="round"/></svg></div><span style="font-size:10px;color:#737B89;font-weight:600;">Atlet</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:9px;width:60px;"><div style="width:48px;height:48px;border-radius:15px;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#1C2A45" stroke-width="1.7"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2" stroke="#1C2A45" stroke-width="1.7" stroke-linecap="round"/></svg></div><span style="font-size:10px;color:#737B89;font-weight:600;">Cabor</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:9px;width:60px;"><div style="width:48px;height:48px;border-radius:15px;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.3 7.2 18.7l.9-5.4L4.2 9.5l5.4-.8L12 3z" stroke="#1C2A45" stroke-width="1.7" stroke-linejoin="round"/></svg></div><span style="font-size:10px;color:#737B89;font-weight:600;">Prestasi</span></div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:9px;width:60px;"><div style="width:48px;height:48px;border-radius:15px;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M4 7h12M4 12h16M4 17h9" stroke="#1C2A45" stroke-width="1.7" stroke-linecap="round"/></svg></div><span style="font-size:10px;color:#737B89;font-weight:600;">Laporan</span></div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:28px;margin-bottom:4px;">
+                <div style="font-size:14.5px;font-weight:800;color:#1C2A45;">Agenda terdekat</div>
+                <span style="font-size:12px;font-weight:700;color:#D62828;">Semua</span>
+              </div>
+              <div>
+                <div style="display:flex;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid #F1F2F4;"><div style="width:38px;text-align:center;"><div style="font-size:17px;font-weight:800;color:#1C2A45;line-height:1;">18</div><div style="font-size:9.5px;color:#9AA3B2;font-weight:600;text-transform:uppercase;">Jun</div></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;color:#1C2A45;">Seleksi Atlet PORPROV Banten</div><div style="font-size:11px;color:#9AA3B2;margin-top:2px;">GOR Tigaraksa · 08:00</div></div></div>
+                <div style="display:flex;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid #F1F2F4;"><div style="width:38px;text-align:center;"><div style="font-size:17px;font-weight:800;color:#1C2A45;line-height:1;">21</div><div style="font-size:9.5px;color:#9AA3B2;font-weight:600;text-transform:uppercase;">Jun</div></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;color:#1C2A45;">Kejuaraan Bulu Tangkis Antar Klub</div><div style="font-size:11px;color:#9AA3B2;margin-top:2px;">GOR Cikupa · 09:00</div></div></div>
+                <div style="display:flex;gap:15px;align-items:center;padding:14px 0;"><div style="width:38px;text-align:center;"><div style="font-size:17px;font-weight:800;color:#1C2A45;line-height:1;">25</div><div style="font-size:9.5px;color:#9AA3B2;font-weight:600;text-transform:uppercase;">Jun</div></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;color:#1C2A45;">Pelatihan Wasit Lisensi C</div><div style="font-size:11px;color:#9AA3B2;margin-top:2px;">Aula KONI · 13:00</div></div></div>
+              </div>
+            </div>
+
+            <div style="position:absolute;left:0;right:0;bottom:0;height:74px;border-top:1px solid #EEF0F2;background:#fff;display:flex;align-items:center;justify-content:space-around;padding:0 6px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#1C2A45;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 10.5L12 3l9 7.5M5 9.5V20h14V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9px;font-weight:700;">Dashboard</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#AEB4BF;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:9px;font-weight:600;">Organisasi</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#AEB4BF;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 20c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:9px;font-weight:600;">Atlet</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#AEB4BF;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9.5h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:9px;font-weight:600;">Agenda</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;color:#AEB4BF;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:9px;font-weight:600;">Profil</span></div>
+            </div>
+            <div style="position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:122px;height:5px;border-radius:99px;background:#1C2A45;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- A · DETAIL ATLET -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#1C2A45;margin-bottom:11px;letter-spacing:.02em;">Detail Atlet</div>
+        <div style="width:402px;height:824px;background:#0E1320;border-radius:52px;padding:10px;box-shadow:0 40px 80px -36px rgba(28,42,69,.55),0 0 0 2px #C9CDD6;position:relative;">
+          <div style="position:relative;width:382px;height:804px;border-radius:43px;overflow:hidden;background:#FFFFFF;">
+            <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#0E1320;border-radius:18px;z-index:50;"></div>
+            <div style="position:absolute;top:0;left:0;right:0;height:50px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:17px 26px 0;"><div style="font-size:13.5px;font-weight:700;color:#1C2A45;">09:41</div><div style="width:23px;height:11px;border:1.4px solid #1C2A45;border-radius:3px;position:relative;"><div style="position:absolute;inset:1.4px;width:72%;background:#1C2A45;border-radius:1px;"></div></div></div>
+
+            <div style="padding:58px 22px 0;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div style="width:40px;height:40px;border-radius:50%;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#1C2A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="font-size:13px;font-weight:700;color:#1C2A45;">Profil Atlet</div>
+                <div style="width:40px;height:40px;border-radius:50%;border:1px solid #E6E8EC;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="2.2" stroke="#1C2A45" stroke-width="1.7"/><circle cx="6" cy="12" r="2.2" stroke="#1C2A45" stroke-width="1.7"/><circle cx="18" cy="19" r="2.2" stroke="#1C2A45" stroke-width="1.7"/><path d="M8 11l8-5M8 13l8 5" stroke="#1C2A45" stroke-width="1.7"/></svg></div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;align-items:center;margin-top:24px;">
+                <div style="width:96px;height:96px;border-radius:50%;border:1px solid #E6E8EC;padding:5px;"><div style="width:100%;height:100%;border-radius:50%;background:#1C2A45;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;">RP</div></div>
+                <div style="font-size:21px;font-weight:800;color:#1C2A45;margin-top:15px;white-space:nowrap;">Rizky Pratama</div>
+                <div style="font-size:12.5px;color:#737B89;margin-top:3px;">Sepak Bola · Persikat Junior</div>
+                <div style="display:flex;align-items:center;gap:6px;margin-top:11px;background:#F4F5F7;border-radius:99px;padding:5px 13px;"><span style="width:6px;height:6px;border-radius:50%;background:#2BA35B;"></span><span style="font-size:11px;font-weight:600;color:#1C2A45;">Senior · Aktif</span></div>
+              </div>
+
+              <div style="display:flex;border:1px solid #ECEEF1;border-radius:16px;overflow:hidden;margin-top:24px;">
+                <div style="flex:1;padding:15px 0;text-align:center;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">23</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Usia</div></div>
+                <div style="flex:1;padding:15px 0;text-align:center;border-left:1px solid #ECEEF1;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">176</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Tinggi (cm)</div></div>
+                <div style="flex:1;padding:15px 0;text-align:center;border-left:1px solid #ECEEF1;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">68</div><div style="font-size:10px;color:#8A93A2;margin-top:5px;font-weight:500;">Berat (kg)</div></div>
+              </div>
+
+              <div style="display:flex;gap:24px;border-bottom:1px solid #ECEEF1;margin-top:24px;padding:0 2px;">
+                <div style="padding:11px 0;font-size:13px;font-weight:700;color:#1C2A45;border-bottom:2px solid #D62828;margin-bottom:-1px;">Biodata</div>
+                <div style="padding:11px 0;font-size:13px;font-weight:500;color:#9AA3B2;">Prestasi</div>
+                <div style="padding:11px 0;font-size:13px;font-weight:500;color:#9AA3B2;">Sertifikasi</div>
+                <div style="padding:11px 0;font-size:13px;font-weight:500;color:#9AA3B2;">Dokumen</div>
+              </div>
+
+              <div style="margin-top:6px;">
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F4F5F7;"><span style="font-size:12px;color:#8A93A2;">NIK</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">3603 0312 0300 0007</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F4F5F7;"><span style="font-size:12px;color:#8A93A2;">Tempat/Tgl Lahir</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Tangerang, 12 Mar 2003</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F4F5F7;"><span style="font-size:12px;color:#8A93A2;">Jenis Kelamin</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Laki-laki</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F4F5F7;"><span style="font-size:12px;color:#8A93A2;">Golongan Darah</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">O</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F4F5F7;"><span style="font-size:12px;color:#8A93A2;">No. HP</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">0812-3456-7890</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;"><span style="font-size:12px;color:#8A93A2;">Klub</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Persikat Junior</span></div>
+              </div>
+
+              <button style="width:100%;margin-top:20px;height:50px;border-radius:14px;border:none;background:#1C2A45;color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;">Lihat Riwayat Prestasi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================= ARAH B ============================= -->
+  <div style="max-width:1040px;margin:56px auto 0;">
+    <div style="display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #D5D9E0;padding-bottom:14px;margin-bottom:26px;">
+      <div style="font-size:13px;font-weight:800;color:#fff;background:#D62828;border-radius:8px;padding:4px 10px;letter-spacing:.04em;">ARAH B</div>
+      <div style="font-size:18px;font-weight:800;color:#1C2A45;">Material You / Soft</div>
+      <div style="font-size:13px;color:#6B7280;">Permukaan tonal lembut · sudut sangat membulat · segmented control · ramah tapi tetap berkelas</div>
+    </div>
+
+    <div style="display:flex;gap:34px;flex-wrap:wrap;">
+
+      <!-- B · DASHBOARD -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#1C2A45;margin-bottom:11px;letter-spacing:.02em;">Dashboard</div>
+        <div style="width:402px;height:824px;background:#0E1320;border-radius:52px;padding:10px;box-shadow:0 40px 80px -36px rgba(28,42,69,.55),0 0 0 2px #C9CDD6;position:relative;">
+          <div style="position:relative;width:382px;height:804px;border-radius:43px;overflow:hidden;background:#F3F5F9;">
+            <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#0E1320;border-radius:18px;z-index:50;"></div>
+            <div style="position:absolute;top:0;left:0;right:0;height:50px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:17px 26px 0;"><div style="font-size:13.5px;font-weight:700;color:#1C2A45;">09:41</div><div style="width:23px;height:11px;border:1.4px solid #1C2A45;border-radius:3px;position:relative;"><div style="position:absolute;inset:1.4px;width:72%;background:#1C2A45;border-radius:1px;"></div></div></div>
+
+            <div style="background:#E4ECF9;border-radius:0 0 30px 30px;padding:58px 22px 26px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:12px;align-items:center;">
+                  <div style="width:46px;height:46px;border-radius:50%;background:#2E4374;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;">PA</div>
+                  <div><div style="font-size:17px;font-weight:800;color:#1C2A45;white-space:nowrap;">Halo, Pak Ahmad</div><div style="font-size:11.5px;color:#5B6B8C;font-weight:500;margin-top:1px;">Pengurus KONI</div></div>
+                </div>
+                <div style="width:42px;height:42px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z" stroke="#2E4374" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="#2E4374" stroke-width="1.7"/></svg><div style="position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:#D62828;border:2px solid #fff;"></div></div>
+              </div>
+              <div style="background:#fff;border-radius:22px;padding:16px 18px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+                <div><div style="font-size:11.5px;color:#5B6B8C;font-weight:500;">Total atlet terdaftar</div><div style="font-size:32px;font-weight:800;color:#1C2A45;letter-spacing:-.02em;line-height:1.1;">1.842</div></div>
+                <div style="background:#FBECEC;border-radius:14px;padding:9px 13px;text-align:center;"><div style="font-size:15px;font-weight:800;color:#D62828;line-height:1;">+7,3%</div><div style="font-size:9.5px;color:#C77;margin-top:3px;font-weight:600;">YoY</div></div>
+              </div>
+            </div>
+
+            <div style="padding:20px 22px 0;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div style="background:#E4ECF9;border-radius:22px;padding:16px;"><div style="width:34px;height:34px;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#2E4374;">CO</div><div style="font-size:24px;font-weight:800;color:#1C2A45;margin-top:11px;line-height:1;">28</div><div style="font-size:11px;color:#5B6B8C;margin-top:4px;font-weight:500;">Cabang Olahraga</div></div>
+                <div style="background:#FBECEC;border-radius:22px;padding:16px;"><div style="width:34px;height:34px;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#D62828;">PR</div><div style="font-size:24px;font-weight:800;color:#1C2A45;margin-top:11px;line-height:1;">74</div><div style="font-size:11px;color:#5B6B8C;margin-top:4px;font-weight:500;">Prestasi 2026</div></div>
+                <div style="background:#EDF0F4;border-radius:22px;padding:16px;"><div style="width:34px;height:34px;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#5B6B8C;">PL</div><div style="font-size:24px;font-weight:800;color:#1C2A45;margin-top:11px;line-height:1;">214</div><div style="font-size:11px;color:#5B6B8C;margin-top:4px;font-weight:500;">Pelatih</div></div>
+                <div style="background:#EDF0F4;border-radius:22px;padding:16px;"><div style="width:34px;height:34px;border-radius:11px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#5B6B8C;">KL</div><div style="font-size:24px;font-weight:800;color:#1C2A45;margin-top:11px;line-height:1;">134</div><div style="font-size:11px;color:#5B6B8C;margin-top:4px;font-weight:500;">Klub</div></div>
+              </div>
+
+              <div style="display:flex;gap:10px;margin-top:18px;">
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px 6px;display:flex;flex-direction:column;align-items:center;gap:7px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="#2E4374" stroke-width="1.7"/><path d="M5.5 20c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6" stroke="#2E4374" stroke-width="1.7"/></svg><span style="font-size:9.5px;color:#5B6B8C;font-weight:600;">Atlet</span></div>
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px 6px;display:flex;flex-direction:column;align-items:center;gap:7px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#2E4374" stroke-width="1.7"/></svg><span style="font-size:9.5px;color:#5B6B8C;font-weight:600;">Cabor</span></div>
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px 6px;display:flex;flex-direction:column;align-items:center;gap:7px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.3 7.2 18.7l.9-5.4L4.2 9.5l5.4-.8z" stroke="#2E4374" stroke-width="1.7" stroke-linejoin="round"/></svg><span style="font-size:9.5px;color:#5B6B8C;font-weight:600;">Prestasi</span></div>
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px 6px;display:flex;flex-direction:column;align-items:center;gap:7px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h12M4 12h16M4 17h9" stroke="#2E4374" stroke-width="1.7" stroke-linecap="round"/></svg><span style="font-size:9.5px;color:#5B6B8C;font-weight:600;">Laporan</span></div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px;margin-bottom:11px;"><div style="font-size:14.5px;font-weight:800;color:#1C2A45;">Agenda terdekat</div><span style="font-size:12px;font-weight:700;color:#D62828;">Semua</span></div>
+              <div style="background:#fff;border-radius:22px;padding:7px 16px;">
+                <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #F1F3F6;"><div style="width:44px;height:46px;border-radius:13px;background:#E4ECF9;display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:16px;font-weight:800;color:#2E4374;line-height:1;">18</span><span style="font-size:9px;font-weight:600;color:#2E4374;text-transform:uppercase;">Jun</span></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;color:#1C2A45;">Seleksi Atlet PORPROV</div><div style="font-size:11px;color:#9AA3B2;margin-top:2px;">GOR Tigaraksa · 08:00</div></div></div>
+                <div style="display:flex;gap:14px;align-items:center;padding:12px 0;"><div style="width:44px;height:46px;border-radius:13px;background:#FBECEC;display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:16px;font-weight:800;color:#D62828;line-height:1;">21</span><span style="font-size:9px;font-weight:600;color:#D62828;text-transform:uppercase;">Jun</span></div><div style="flex:1;"><div style="font-size:12.5px;font-weight:700;color:#1C2A45;">Kejuaraan Bulu Tangkis</div><div style="font-size:11px;color:#9AA3B2;margin-top:2px;">GOR Cikupa · 09:00</div></div></div>
+              </div>
+            </div>
+
+            <div style="position:absolute;left:14px;right:14px;bottom:16px;height:66px;border-radius:24px;background:#1C2A45;display:flex;align-items:center;justify-content:space-around;padding:0 8px;box-shadow:0 16px 30px -12px rgba(28,42,69,.5);">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 10.5L12 3l9 7.5M5 9.5V20h14V9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:8.5px;font-weight:700;">Beranda</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#8893AD;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:8.5px;font-weight:600;">Cabor</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#8893AD;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 20c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:8.5px;font-weight:600;">Atlet</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#8893AD;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 9.5h17" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:8.5px;font-weight:600;">Agenda</span></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#8893AD;"><svg width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg><span style="font-size:8.5px;font-weight:600;">Profil</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B · DETAIL ATLET -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#1C2A45;margin-bottom:11px;letter-spacing:.02em;">Detail Atlet</div>
+        <div style="width:402px;height:824px;background:#0E1320;border-radius:52px;padding:10px;box-shadow:0 40px 80px -36px rgba(28,42,69,.55),0 0 0 2px #C9CDD6;position:relative;">
+          <div style="position:relative;width:382px;height:804px;border-radius:43px;overflow:hidden;background:#F3F5F9;">
+            <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:30px;background:#0E1320;border-radius:18px;z-index:50;"></div>
+            <div style="position:absolute;top:0;left:0;right:0;height:50px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:17px 26px 0;"><div style="font-size:13.5px;font-weight:700;color:#1C2A45;">09:41</div><div style="width:23px;height:11px;border:1.4px solid #1C2A45;border-radius:3px;position:relative;"><div style="position:absolute;inset:1.4px;width:72%;background:#1C2A45;border-radius:1px;"></div></div></div>
+
+            <div style="background:#E4ECF9;border-radius:0 0 32px 32px;padding:58px 22px 26px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div style="width:42px;height:42px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#2E4374" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div style="width:42px;height:42px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 16.5V20h3.5L18 9.5 14.5 6 4 16.5z" stroke="#2E4374" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;margin-top:10px;">
+                <div style="width:92px;height:92px;border-radius:50%;background:#fff;padding:4px;"><div style="width:100%;height:100%;border-radius:50%;background:#2E4374;display:flex;align-items:center;justify-content:center;color:#fff;font-size:27px;font-weight:700;">RP</div></div>
+                <div style="font-size:20px;font-weight:800;color:#1C2A45;margin-top:13px;white-space:nowrap;">Rizky Pratama</div>
+                <div style="font-size:12px;color:#5B6B8C;margin-top:3px;font-weight:500;">Sepak Bola · Persikat Junior</div>
+                <div style="display:flex;gap:8px;margin-top:12px;"><span style="font-size:10.5px;font-weight:700;color:#2E4374;background:#fff;padding:5px 13px;border-radius:99px;">Senior</span><span style="font-size:10.5px;font-weight:700;color:#2BA35B;background:#E4F4EB;padding:5px 13px;border-radius:99px;">Aktif</span></div>
+              </div>
+            </div>
+
+            <div style="padding:18px 22px 0;">
+              <div style="display:flex;gap:10px;">
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px;text-align:center;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">23</div><div style="font-size:10px;color:#8A93A2;margin-top:4px;font-weight:500;">Usia</div></div>
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px;text-align:center;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">176</div><div style="font-size:10px;color:#8A93A2;margin-top:4px;font-weight:500;">Tinggi</div></div>
+                <div style="flex:1;background:#fff;border-radius:18px;padding:13px;text-align:center;"><div style="font-size:18px;font-weight:800;color:#1C2A45;line-height:1;">68</div><div style="font-size:10px;color:#8A93A2;margin-top:4px;font-weight:500;">Berat</div></div>
+              </div>
+
+              <div style="display:flex;gap:4px;background:#E6E9EF;border-radius:99px;padding:4px;margin-top:18px;">
+                <div style="flex:1;text-align:center;padding:8px;border-radius:99px;background:#1C2A45;color:#fff;font-size:11.5px;font-weight:700;">Biodata</div>
+                <div style="flex:1;text-align:center;padding:8px;color:#6B7280;font-size:11.5px;font-weight:600;">Prestasi</div>
+                <div style="flex:1;text-align:center;padding:8px;color:#6B7280;font-size:11.5px;font-weight:600;">Dokumen</div>
+              </div>
+
+              <div style="background:#fff;border-radius:22px;padding:6px 18px;margin-top:16px;">
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3F5F8;"><span style="font-size:12px;color:#8A93A2;">NIK</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">3603 0312 0300 0007</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3F5F8;"><span style="font-size:12px;color:#8A93A2;">Tempat/Tgl Lahir</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Tangerang, 12 Mar 2003</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3F5F8;"><span style="font-size:12px;color:#8A93A2;">Jenis Kelamin</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Laki-laki</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F3F5F8;"><span style="font-size:12px;color:#8A93A2;">Golongan Darah</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">O</span></div>
+                <div style="display:flex;justify-content:space-between;padding:13px 0;"><span style="font-size:12px;color:#8A93A2;">Klub</span><span style="font-size:12.5px;font-weight:600;color:#1C2A45;">Persikat Junior</span></div>
+              </div>
+
+              <button style="width:100%;margin-top:16px;height:50px;border-radius:16px;border:none;background:#D62828;color:#fff;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;">Lihat Riwayat Prestasi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1140,&quot;height&quot;:960}}"></script>
+</body>
+</html>

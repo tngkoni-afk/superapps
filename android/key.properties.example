@@ -1,0 +1,13 @@
+# Salin file ini menjadi `android/key.properties` lalu isi nilainya.
+# JANGAN commit key.properties atau file .jks/.keystore ke repo.
+#
+# Membuat keystore rilis (sekali saja):
+#   keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA \
+#           -keysize 2048 -validity 10000 -alias upload
+#
+# storeFile boleh path absolut atau relatif terhadap folder android/app.
+
+storePassword=GANTI_PASSWORD_STORE
+keyPassword=GANTI_PASSWORD_KEY
+keyAlias=upload
+storeFile=upload-keystore.jks
